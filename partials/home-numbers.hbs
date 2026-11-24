@@ -1,0 +1,11 @@
+<!-- 8. Numbers -->
+<section class="numbers border-y border-line" data-section="numbers" aria-label="Shen Tours in numbers">
+  <dl class="wrap numbers-grid">
+    {{#each stats}}
+    <div class="numbers-tile">
+      <dt class="label text-ink-muted">{{label}}</dt>
+      <dd class="numbers-value"><span {{#unless noCount}}data-count="{{value}}"{{/unless}}>{{value}}</span>{{suffix}}</dd>
+    </div>
+    {{/each}}
+  </dl>
+</section>

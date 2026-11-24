@@ -1,0 +1,25 @@
+<!-- 13. FAQ: native <details>, so it works without JavaScript. FAQPage JSON-LD uses the same data. -->
+<section id="faq" class="faq py-section" data-section="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="label text-ink-muted">FAQ</p>
+      <h2 id="faq-title" class="mt-5 text-display-lg">Frequently asked questions</h2>
+      {{#if business.whatsapp}}
+      <p class="mt-6 max-w-[22rem] text-body text-ink-muted">
+        Can't find your answer? <a href="https://wa.me/{{digits business.whatsapp}}" class="underline underline-offset-4">Message us on WhatsApp</a> and we'll reply as soon as we can.
+      </p>
+      {{/if}}
+    </div>
+    <div class="faq-list">
+      {{#each faqs}}
+      <details class="faq-item" name="faq">
+        <summary>
+          <span class="font-display text-display-sm uppercase">{{q}}</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p class="faq-answer text-body">{{a}}</p>
+      </details>
+      {{/each}}
+    </div>
+  </div>
+</section>

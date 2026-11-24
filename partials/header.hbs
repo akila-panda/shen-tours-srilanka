@@ -1,0 +1,61 @@
+<a href="#main" class="label sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-paper focus:px-4 focus:py-3 focus:text-ink">Skip to content</a>
+
+<header class="site-header" data-section="header">
+  <div class="wrap flex h-header items-center justify-between gap-4">
+    <a href="/" class="badge" aria-label="{{business.name}}, home">
+      <svg class="badge-ring" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="badge-path" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" /></defs>
+        <text><textPath href="#badge-path" textLength="236" lengthAdjust="spacing">{{business.name}} · since {{business.foundedYear}} ·</textPath></text>
+      </svg>
+      <span class="badge-mark" aria-hidden="true">S</span>
+    </a>
+
+    <nav class="flex items-center gap-3 md:gap-6" aria-label="Quick links">
+      {{#if business.whatsapp}}
+      <a class="label hidden items-center gap-2 no-underline lg:inline-flex" href="https://wa.me/{{digits business.whatsapp}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" stroke-linejoin="round"/><path d="M9.5 9.2c.3 1.9 1.6 3.6 3.6 4.6l1.1-1 1.6.8c-.2.9-1 1.4-1.8 1.4-3 0-6-3-6-6 0-.8.6-1.6 1.4-1.8l.8 1.6z" fill="currentColor" stroke="none"/></svg>
+        WhatsApp
+      </a>
+      {{/if}}
+      {{#if quoteUrl}}
+      <a class="btn-pill max-[359px]:hidden" href="{{quoteUrl}}">Plan my tour <span class="dot" aria-hidden="true">→</span></a>
+      {{/if}}
+      <a href="#menu" class="menu-btn label" aria-controls="menu" aria-expanded="false" data-menu-open>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+        <span class="max-sm:sr-only">Menu</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Full-screen menu. Without JavaScript it opens via :target (#menu). -->
+<div id="menu" class="site-menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu>
+  <div class="wrap flex h-header items-center justify-between">
+    <p class="label">{{business.name}}</p>
+    <a href="#" class="menu-btn label" data-menu-close>
+      <span class="menu-icon is-close" aria-hidden="true"><i></i><i></i></span>
+      Close
+    </a>
+  </div>
+  <nav class="wrap pt-6 pb-12 md:pt-10" aria-label="Main">
+    <ol class="menu-links">
+      <li><a href="#tours"><span class="label">01</span>Tours</a></li>
+      <li><a href="#where"><span class="label">02</span>Where to go</a></li>
+      <li><a href="#guides"><span class="label">03</span>Your guides</a></li>
+      <li><a href="#how"><span class="label">04</span>How it works</a></li>
+      <li><a href="#faq"><span class="label">05</span>FAQ</a></li>
+      <li><a href="#contact"><span class="label">06</span>Contact</a></li>
+    </ol>
+  </nav>
+  <div class="wrap grid gap-6 border-t border-line-light py-8 sm:grid-cols-2">
+    {{#if business.whatsapp}}<p><span class="label block opacity-80">WhatsApp</span><a class="mt-2 inline-block font-display text-display-sm no-underline" href="https://wa.me/{{digits business.whatsapp}}">{{business.whatsapp}}</a></p>{{/if}}
+    {{#if business.phone}}<p><span class="label block opacity-80">Phone</span><a class="mt-2 inline-block font-display text-display-sm no-underline" href="tel:+{{digits business.phone}}">{{business.phone}}</a></p>{{/if}}
+  </div>
+</div>
+
+<!-- Left-edge scroll counter (ERA). Decorative; desktop only. -->
+<div class="scroll-counter" aria-hidden="true">
+  <span data-counter>00</span>
+  <span class="scroll-counter-track"><span class="scroll-counter-fill" data-counter-fill></span></span>
+  <span>100</span>
+</div>

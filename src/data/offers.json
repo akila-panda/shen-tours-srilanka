@@ -1,0 +1,6 @@
+[
+  { "slug": "shoulder-season", "title": "Shoulder season", "discountPercent": 15, "terms": null, "validFrom": null, "validTo": null },
+  { "slug": "early-booking", "title": "Early booking", "discountPercent": 10, "terms": "Book by 15 November 2026", "validFrom": null, "validTo": "2026-11-15" },
+  { "slug": "green-season", "title": "Green season", "discountPercent": 20, "terms": "Travel May to September 2027", "validFrom": null, "validTo": "2027-09-30" },
+  { "slug": "long-stay", "title": "Long stay", "discountPercent": 10, "terms": "Trips of 14 days or more", "validFrom": null, "validTo": null }
+]

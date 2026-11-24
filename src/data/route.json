@@ -1,0 +1,8 @@
+[
+  { "slug": "cmb", "name": "Colombo airport", "short": "CMB", "note": "Your guide meets you at arrivals", "fromAirport": null, "x": 70, "y": 300, "labelBelow": true },
+  { "slug": "sigiriya", "name": "Sigiriya", "short": null, "note": "Cultural Triangle", "fromAirport": "≈ 4 h from the airport", "x": 300, "y": 120, "labelBelow": false },
+  { "slug": "kandy", "name": "Kandy", "short": null, "note": "Hill country", "fromAirport": null, "x": 520, "y": 270, "labelBelow": true },
+  { "slug": "ella", "name": "Ella", "short": null, "note": "Hill country", "fromAirport": null, "x": 760, "y": 130, "labelBelow": false },
+  { "slug": "yala", "name": "Yala", "short": null, "note": "Wildlife", "fromAirport": null, "x": 970, "y": 300, "labelBelow": true },
+  { "slug": "galle", "name": "Galle", "short": null, "note": "South coast", "fromAirport": null, "x": 1140, "y": 160, "labelBelow": false }
+]

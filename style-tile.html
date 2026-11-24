@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    {{> head-seo}}
+    <script type="module" src="/src/js/main.js"></script>
+  </head>
+  <body>
+    {{> header}}
+    <main id="main" class="pt-header">
+      <!-- Intro -->
+      <section class="wrap pt-16 pb-12 md:pt-24">
+        <p class="label text-ink-muted">Phase 0 review · internal, not indexed</p>
+        <h1 class="mt-6 text-display-lg">Style tile</h1>
+        <p class="mt-6 max-w-prose text-body-lg text-ink-muted">
+          The colours, type and buttons every homepage section is built from. Colours are ERA
+          Residence's. Fonts are free stand-ins for ERA's licensed ones; swapping them later
+          changes three lines in <code>src/styles/main.css</code>.
+        </p>
+      </section>
+
+      <!-- 1. Colours -->
+      <section class="wrap border-t border-line py-16" aria-labelledby="t-colour">
+        <div class="flex items-baseline justify-between gap-6">
+          <h2 id="t-colour" class="text-display-md">Colour</h2>
+          <p class="label text-ink-muted">01</p>
+        </div>
+        <ul class="mt-10 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <li class="bg-paper">
+            <div class="h-36 bg-ink"></div>
+            <div class="p-5">
+              <p class="label">Ink · #17233B</p>
+              <p class="mt-2 text-small text-ink-muted">Headings, body text, lines, solid button. On paper 14.1:1 · on sky 9.6:1 · on white 15.7:1.</p>
+            </div>
+          </li>
+          <li class="bg-paper">
+            <div class="h-36 border-b border-line bg-paper"></div>
+            <div class="p-5">
+              <p class="label">Paper · #F3F3EC</p>
+              <p class="mt-2 text-small text-ink-muted">Page background. Text on ink 14.1:1 · on plum 15.4:1.</p>
+            </div>
+          </li>
+          <li class="bg-paper">
+            <div class="h-36 bg-sky"></div>
+            <div class="p-5">
+              <p class="label">Sky · #B5CEDB</p>
+              <p class="mt-2 text-small text-ink-muted">"Three reasons" circle and the route band. Ink text only (9.6:1); muted text fails here (4.4:1).</p>
+            </div>
+          </li>
+          <li class="bg-paper">
+            <div class="h-36 bg-plum"></div>
+            <div class="p-5">
+              <p class="label">Plum · #340C24</p>
+              <p class="mt-2 text-small text-ink-muted">Footer with the giant WhatsApp number. Paper text 15.4:1 · plum-muted 9.1:1.</p>
+            </div>
+          </li>
+          <li class="bg-paper">
+            <div class="h-36 bg-ink-muted"></div>
+            <div class="p-5">
+              <p class="label">Ink muted · #4E586B</p>
+              <p class="mt-2 text-small text-ink-muted">Secondary text on paper or white only (6.4:1).</p>
+            </div>
+          </li>
+          <li class="bg-paper">
+            <div class="h-36 bg-bloom"></div>
+            <div class="p-5">
+              <p class="label">Bloom · #C2266E</p>
+              <p class="mt-2 text-small text-ink-muted">Imagery only (the cut-out flower). Never text. Final value picked from the photo.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 2. Type -->
+      <section class="wrap border-t border-line py-16" aria-labelledby="t-type">
+        <div class="flex items-baseline justify-between gap-6">
+          <h2 id="t-type" class="text-display-md">Type</h2>
+          <p class="label text-ink-muted">02</p>
+        </div>
+
+        <dl class="mt-10 divide-y divide-line border-y border-line">
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Display XL<br />Instrument Serif · caps<br />52→168px</dt>
+            <dd class="font-display text-display-xl uppercase">Arrivals to anywhere</dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Display L<br />44→112px</dt>
+            <dd class="font-display text-display-lg uppercase">Where to go in Sri Lanka</dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Display M<br />34→72px · section H2</dt>
+            <dd class="font-display text-display-md uppercase">Sri Lanka tour packages</dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Display S<br />26→40px · cards, buttons</dt>
+            <dd class="font-display text-display-sm uppercase">Hill Country · 6 days</dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Script L / M<br />Pinyon Script · one word at a time</dt>
+            <dd>
+              <span class="script block text-script-lg">by the sea</span>
+              <span class="script block text-script-md">with Shen</span>
+            </dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Body L / Body / Small<br />Archivo · 108% width</dt>
+            <dd class="max-w-prose space-y-4">
+              <p class="text-body-lg">Your driver-guide meets you at arrivals and stays with your group for the whole trip. Just your group, no strangers.</p>
+              <p class="text-body">Private air-conditioned vehicle, fuel and parking, airport pickup and drop-off, and 24/7 support are included. Hotels and entrance tickets are separate.</p>
+              <p class="text-small text-ink-muted">Prices are per person, for the vehicle and driver-guide.</p>
+            </dd>
+          </div>
+          <div class="grid gap-4 py-8 md:grid-cols-[14rem_1fr]">
+            <dt class="label text-ink-muted">Label<br />Archivo · 125% width · caps · tracked</dt>
+            <dd class="label">Airport pickup · English-speaking driver-guide · since 2022</dd>
+          </div>
+        </dl>
+
+        <!-- Type in combination: how a hero headline will feel -->
+        <div class="mt-16 bg-white px-6 py-14 md:px-14 md:py-20">
+          <p class="label text-ink-muted">In combination · hero headline</p>
+          <p class="mt-8 font-display text-display-xl uppercase" aria-hidden="true">
+            Private Sri Lanka tours
+            <span class="script -mt-[0.15em] block text-script-lg normal-case md:ml-[18%]">with a local</span>
+            driver-guide
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Buttons and links -->
+      <section class="wrap border-t border-line py-16" aria-labelledby="t-buttons">
+        <div class="flex items-baseline justify-between gap-6">
+          <h2 id="t-buttons" class="text-display-md">Buttons</h2>
+          <p class="label text-ink-muted">03</p>
+        </div>
+        <p class="mt-4 max-w-prose text-small text-ink-muted">Press Tab to see the focus ring on each one.</p>
+
+        <div class="mt-10 grid gap-px bg-line md:grid-cols-2">
+          <div class="bg-paper p-8">
+            <p class="label text-ink-muted">Link button (ERA style) · secondary actions</p>
+            <a href="#t-buttons" class="btn-link mt-6">See tours <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="bg-paper p-8">
+            <p class="label text-ink-muted">Solid button · the one main action</p>
+            <a href="#t-buttons" class="btn-solid mt-6">Get a free quote <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="bg-paper p-8">
+            <p class="label text-ink-muted">Pill · header</p>
+            <a href="#t-buttons" class="btn-pill mt-6">Plan my tour <span class="dot" aria-hidden="true">→</span></a>
+          </div>
+          <div class="ph aspect-[16/9] place-items-center p-8">
+            <span class="flex flex-wrap items-center gap-6">
+              <a href="#t-buttons" class="btn-solid is-light">Get a free quote <span aria-hidden="true">→</span></a>
+              <a href="#t-buttons" class="btn-link text-paper">See tours <span class="arrow" aria-hidden="true">→</span></a>
+            </span>
+          </div>
+        </div>
+
+        <p class="mt-10 max-w-prose text-body">
+          Inline links in body text look <a href="#t-buttons" class="underline underline-offset-4">like this</a>,
+          underlined so they never depend on colour alone.
+        </p>
+      </section>
+
+      <!-- 4. Image placeholders -->
+      <section class="wrap border-t border-line py-16" aria-labelledby="t-images">
+        <div class="flex items-baseline justify-between gap-6">
+          <h2 id="t-images" class="text-display-md">Image slots</h2>
+          <p class="label text-ink-muted">04</p>
+        </div>
+        <p class="mt-4 max-w-prose text-small text-ink-muted">
+          Until the Sri Lanka photos are approved, every image is a labelled block at its final
+          shape, so layout and motion can be reviewed. Swapped in Phase 6.
+        </p>
+        <div class="mt-10 grid gap-6 md:grid-cols-[2fr_1fr_1fr]">
+          <div class="ph aspect-[3/2]" role="img" aria-label="Placeholder: Sigiriya rock from the air">
+            <span class="label">Sigiriya, aerial · 3:2</span>
+          </div>
+          <div class="ph aspect-[4/5]" role="img" aria-label="Placeholder: blue train on Nine Arch Bridge, Ella">
+            <span class="label">Nine Arch Bridge · 4:5</span>
+          </div>
+          <div class="ph aspect-[4/5]" role="img" aria-label="Placeholder: stilt fishermen, south coast">
+            <span class="label">Stilt fishermen · 4:5</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Bands: sky and plum -->
+      <section class="bg-sky py-section" aria-labelledby="t-sky">
+        <div class="wrap">
+          <p class="label">Sky band · route section and circle reveal</p>
+          <h2 id="t-sky" class="mt-6 text-display-lg">From arrivals<br />to anywhere</h2>
+          <p class="mt-6 max-w-prose text-body-lg">Colombo airport to Sigiriya is about four hours by road.</p>
+        </div>
+      </section>
+
+      <section class="bg-plum py-section text-paper" aria-labelledby="t-plum">
+        <div class="wrap">
+          <p class="label text-plum-muted">Plum band · footer</p>
+          <h2 id="t-plum" class="sr-only">Footer sample</h2>
+          <p class="mt-6 font-display text-display-xl uppercase">{{business.whatsapp}}</p>
+          <p class="mt-6 label text-plum-muted">WhatsApp</p>
+        </div>
+      </section>
+    </main>
+    {{> footer}}
+  </body>
+</html>

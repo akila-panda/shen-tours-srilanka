@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "cultural-triangle",
+    "title": "Cultural Triangle",
+    "type": "round",
+    "durationDays": 5,
+    "bestMonths": "January to September",
+    "destinations": [],
+    "pricing": {
+      "currency": "USD",
+      "basis": "per_person",
+      "from": 37500,
+      "tiers": []
+    },
+    "featured": true,
+    "order": 1,
+    "status": "published",
+    "photo": {
+      "src": null,
+      "alt": "Sigiriya rock fortress above the forest",
+      "placeholder": "Sigiriya from the air"
+    }
+  },
+  {
+    "slug": "hill-country",
+    "title": "Hill Country",
+    "type": "round",
+    "durationDays": 6,
+    "bestMonths": "January to April",
+    "destinations": [],
+    "pricing": {
+      "currency": "USD",
+      "basis": "per_person",
+      "from": 39000,
+      "tiers": []
+    },
+    "featured": true,
+    "order": 2,
+    "status": "published",
+    "photo": {
+      "src": null,
+      "alt": "Tea plantation on a misty hillside in the hill country",
+      "placeholder": "Tea country, Nuwara Eliya"
+    }
+  },
+  {
+    "slug": "south-coast",
+    "title": "South Coast",
+    "type": "round",
+    "durationDays": 4,
+    "bestMonths": "November to April",
+    "destinations": [],
+    "pricing": {
+      "currency": "USD",
+      "basis": "per_person",
+      "from": 26000,
+      "tiers": []
+    },
+    "featured": true,
+    "order": 3,
+    "status": "published",
+    "photo": {
+      "src": null,
+      "alt": "Stilt fishermen on Sri Lanka's south coast",
+      "placeholder": "Stilt fishermen, south coast"
+    }
+  },
+  {
+    "slug": "wildlife-safari",
+    "title": "Wildlife Safari",
+    "type": "round",
+    "durationDays": 5,
+    "bestMonths": "February to July",
+    "destinations": [],
+    "pricing": {
+      "currency": "USD",
+      "basis": "per_person",
+      "from": 32500,
+      "tiers": []
+    },
+    "featured": true,
+    "order": 4,
+    "status": "published",
+    "photo": {
+      "src": null,
+      "alt": "Leopard on a dirt track in Yala National Park",
+      "placeholder": "Leopard, Yala"
+    }
+  },
+  {
+    "slug": "complete-sri-lanka",
+    "title": "Complete Sri Lanka",
+    "type": "round",
+    "durationDays": 10,
+    "bestMonths": "December to April",
+    "destinations": [],
+    "pricing": {
+      "currency": "USD",
+      "basis": "per_person",
+      "from": 65000,
+      "tiers": []
+    },
+    "featured": true,
+    "order": 5,
+    "status": "published",
+    "photo": {
+      "src": null,
+      "alt": "Blue train crossing the Nine Arch Bridge near Ella",
+      "placeholder": "Nine Arch Bridge, Ella"
+    }
+  }
+]

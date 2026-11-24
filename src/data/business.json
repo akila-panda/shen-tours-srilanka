@@ -1,0 +1,57 @@
+{
+  "name": "Shen Tours Sri Lanka",
+  "shortName": "Shen Tours",
+  "alternateName": "Ceylon Shen Tours",
+  "legalName": null,
+  "sltdaNumber": null,
+  "foundedYear": 2022,
+  "tagline": "Private Sri Lanka tours with a local driver-guide",
+  "domain": null,
+  "phone": "+94 779 166 168",
+  "whatsapp": "+94 743 717 419",
+  "email": null,
+  "address": {
+    "street": "152/5 Weliya North",
+    "locality": "Minuwangoda",
+    "postalCode": "11550",
+    "country": "LK",
+    "countryName": "Sri Lanka",
+    "nearby": "near Bandaranaike International Airport (CMB)"
+  },
+  "geo": null,
+  "hours": [
+    { "days": "Monday to Friday", "schema": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" },
+    { "days": "Saturday", "schema": ["Saturday"], "opens": "09:00", "closes": "16:00" }
+  ],
+  "closed": "Sunday",
+  "stats": {
+    "travellers": "100+",
+    "tours": "90+",
+    "guides": 5
+  },
+  "fromPricePerPersonPerDay": 6500,
+  "transfersFrom": 2500,
+  "dayTripsFromPerDay": 4500,
+  "currency": "USD",
+  "included": [
+    "English-speaking driver-guide",
+    "Private air-conditioned vehicle",
+    "Fuel and parking",
+    "Airport pickup and drop-off",
+    "Passenger insurance up to LKR 500,000",
+    "24/7 support"
+  ],
+  "excluded": [
+    "Flights and visa (ETA)",
+    "Hotels and meals",
+    "Entrance tickets and safari jeeps",
+    "Personal expenses and tips"
+  ],
+  "socials": {
+    "facebook": null,
+    "instagram": "https://www.instagram.com/shashen_banuka/",
+    "tiktok": "https://www.tiktok.com/@shashenbanuka",
+    "tripadvisor": null
+  },
+  "rating": null
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "colombo",
+    "name": "Colombo",
+    "region": "West coast",
+    "photo": {
+      "src": null,
+      "alt": "Lotus Tower and the train line, Colombo",
+      "placeholder": "Lotus Tower and the train line, Colombo"
+    }
+  },
+  {
+    "slug": "kandy",
+    "name": "Kandy",
+    "region": "Hill country",
+    "photo": {
+      "src": null,
+      "alt": "Temple of the Tooth across the lake, Kandy",
+      "placeholder": "Temple of the Tooth across the lake, Kandy"
+    }
+  },
+  {
+    "slug": "galle",
+    "name": "Galle",
+    "region": "South coast",
+    "photo": {
+      "src": null,
+      "alt": "Lighthouse and fort walls, Galle",
+      "placeholder": "Lighthouse and fort walls, Galle"
+    }
+  },
+  {
+    "slug": "sigiriya",
+    "name": "Sigiriya",
+    "region": "Cultural Triangle",
+    "photo": {
+      "src": null,
+      "alt": "Sigiriya rock from the air",
+      "placeholder": "Sigiriya rock from the air"
+    }
+  },
+  {
+    "slug": "ella",
+    "name": "Ella",
+    "region": "Hill country",
+    "photo": {
+      "src": null,
+      "alt": "Nine Arch Bridge, Ella",
+      "placeholder": "Nine Arch Bridge, Ella"
+    }
+  },
+  {
+    "slug": "mirissa",
+    "name": "Mirissa",
+    "region": "South coast",
+    "photo": {
+      "src": null,
+      "alt": "Palm-lined beach, Mirissa",
+      "placeholder": "Palm-lined beach, Mirissa"
+    }
+  },
+  {
+    "slug": "jaffna",
+    "name": "Jaffna",
+    "region": "North",
+    "photo": {
+      "src": null,
+      "alt": "Nallur temple, Jaffna",
+      "placeholder": "Nallur temple, Jaffna"
+    }
+  },
+  {
+    "slug": "arugam-bay",
+    "name": "Arugam Bay",
+    "region": "East coast",
+    "photo": {
+      "src": null,
+      "alt": "Boats on the shore, Arugam Bay",
+      "placeholder": "Boats on the shore, Arugam Bay"
+    }
+  }
+]

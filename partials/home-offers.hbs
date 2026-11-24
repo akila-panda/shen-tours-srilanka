@@ -1,0 +1,23 @@
+{{#if offers.length}}
+<!-- 9. Seasonal offers: only offers still valid at build time render; offers.js re-checks the date -->
+<section id="offers" class="offers bg-ink py-section text-paper" data-section="offers" aria-labelledby="offers-title">
+  <div class="wrap">
+    <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+      <div>
+        <p class="label opacity-80">Offers</p>
+        <h2 id="offers-title" class="mt-5 text-display-lg">Seasonal offers</h2>
+      </div>
+      {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-link">Ask about an offer <span class="arrow" aria-hidden="true">→</span></a>{{/if}}
+    </div>
+    <ul class="offers-grid mt-12 md:mt-16">
+      {{#each offers}}
+      <li class="offer-card" data-offer {{#if validTo}}data-valid-to="{{validTo}}"{{/if}}>
+        <p class="offer-value"><span class="font-display">{{discountPercent}}%</span> <span class="script">off</span></p>
+        <h3 class="mt-6 text-display-sm">{{title}}</h3>
+        {{#if terms}}<p class="label mt-3 opacity-80">{{terms}}</p>{{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+{{/if}}
