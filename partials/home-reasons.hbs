@@ -1,40 +1,26 @@
-<!-- 3. Zoom into the photo → Three reasons (circle reveal) -->
+<!-- 3. Three reasons over Sigiriya (becomes Moment 2, the Sigiriya climb, in R4) -->
 <section id="reasons" class="reasons" data-section="reasons" aria-labelledby="reasons-title">
   <div class="reasons-stage" data-reasons-stage>
-    <div class="reasons-photo" data-reasons-photo>
-      <div class="ph h-full w-full" role="img" aria-label="Sigiriya rock fortress rising above the forest, seen from the air" data-reasons-img>
-        <span class="label opacity-80">Photo to come · Sigiriya from the air</span>
-      </div>
-    </div>
-
-    <div class="reasons-circle" data-reasons-circle>
-      <div class="wrap flex h-full flex-col items-center justify-center text-center">
-        <h2 id="reasons-title" class="reasons-title" data-reasons-title>
-          <span class="sr-only">Three reasons to travel with Shen</span>
-          <svg class="reasons-arch" viewBox="0 30 1000 270" aria-hidden="true">
-            <defs><path id="reasons-arc" d="M20,290 Q500,-90 980,290" /></defs>
-            <text text-anchor="middle"><textPath href="#reasons-arc" startOffset="50%">Three reasons to travel with Shen</textPath></text>
-          </svg>
-        </h2>
-
-        <ol class="reasons-list">
-          <li data-reason>
-            <span class="label">I</span>
-            <h3 class="mt-4 text-display-sm">Just your group, no strangers</h3>
-            <p class="mt-3 text-small">Your own air-conditioned car or van and driver-guide for the whole trip.</p>
-          </li>
-          <li data-reason>
-            <span class="label">II</span>
-            <h3 class="mt-4 text-display-sm">Local driver-guides</h3>
-            <p class="mt-3 text-small">{{business.stats.guides}} English-speaking guides, each with {{guideYearsMin}}+ years of guiding, led by founder Shashen Bhanuka.</p>
-          </li>
-          <li data-reason>
-            <span class="label">III</span>
-            <h3 class="mt-4 text-display-sm">Clear prices</h3>
-            <p class="mt-3 text-small">From {{money business.fromPricePerPersonPerDay business.currency}} per person per day. Fuel, parking, airport pickup and passenger insurance are included.</p>
-          </li>
-        </ol>
-      </div>
+    <img class="reasons-photo" src="{{photos.sigiriya.src}}" alt="{{photos.sigiriya.alt}}" width="1600" height="1067" loading="lazy" data-reasons-img />
+    <div class="wrap reasons-inner">
+      <h2 id="reasons-title" class="reasons-title">Three reasons to travel with Shen</h2>
+      <ol class="reasons-notes">
+        <li class="note" style="--r: -2.5deg" data-reason>
+          <span class="note-num" aria-hidden="true">1</span>
+          <h3>Just your group, no strangers</h3>
+          <p>Your own air-conditioned car or van and driver-guide for the whole trip.</p>
+        </li>
+        <li class="note" style="--r: 1.5deg" data-reason>
+          <span class="note-num" aria-hidden="true">2</span>
+          <h3>Local driver-guides</h3>
+          <p>{{business.stats.guides}} English-speaking guides, each with {{guideYearsMin}}+ years of guiding, led by founder Shashen Bhanuka.</p>
+        </li>
+        <li class="note" style="--r: -1deg" data-reason>
+          <span class="note-num" aria-hidden="true">3</span>
+          <h3>Clear prices</h3>
+          <p>From {{money business.fromPricePerPersonPerDay business.currency}} per person per day. Fuel, parking, airport pickup and passenger insurance included.</p>
+        </li>
+      </ol>
     </div>
   </div>
 </section>

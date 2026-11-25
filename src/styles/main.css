@@ -1,76 +1,74 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens — the only source of colours, type, spacing, radii, easing and durations
- * (CLAUDE.md "Design tokens win"). Values from era-residence.com (doc 07). Fonts are free
- * stand-ins until the Adobe Fonts kit / Maison Neue licence is confirmed: swap the family
- * names in --font-display / --font-script / --font-sans and nothing else changes.
+ * Design tokens: "The Road Book" (doc 09). Shen's route notebook: laterite road-red, tea-dark
+ * ink, white paper, ballpoint-blue handwriting, cardboard railway-ticket tints. These tokens are
+ * the only source of colours, type, spacing, radii, easing and durations (CLAUDE.md).
+ *
+ * Handwriting is the road book's own voice (annotations, captions). It is never used to put
+ * words in Shen's mouth: only his real, supplied quotes are signed with his name.
  */
 @theme {
-  /* Reset Tailwind's default palette so only our colours exist. */
   --color-*: initial;
-  --color-ink: #17233b;
-  --color-ink-muted: #4e586b; /* 6.43:1 on paper — secondary text on paper/white only */
-  --color-paper: #f3f3ec;
-  --color-sky: #b5cedb;
-  --color-plum: #340c24;
-  --color-plum-muted: #c9b8c2; /* 9.08:1 on plum — secondary text in the footer */
-  --color-white: #ffffff;
-  --color-bloom: #c2266e; /* imagery accents only (cut-out flower), never text */
-  --color-line: rgb(23 35 59 / 0.18);
-  --color-line-light: rgb(243 243 236 / 0.28);
+  --color-laterite: #b4532a; /* white text 4.99:1; ink/yellow only for large text */
+  --color-laterite-deep: #8e3b1c; /* 7.52:1 on white: stamps, small accents on paper */
+  --color-ink: #16231b; /* tea-dark ink, 16.3:1 on white */
+  --color-ink-soft: #4b5a50; /* 7.3:1 on white, 5.7:1 on mist */
+  --color-paper: #ffffff;
+  --color-mist: #dce6df; /* hill-country mist band */
+  --color-ballpoint: #1f3a93; /* handwriting, 10:1 on white */
+  --color-ticket-green: #e7f0d9;
+  --color-ticket-pink: #f4d9e2;
+  --color-ticket-yellow: #f6e7a6;
+  --color-ticket-blue: #d6e6f2;
+  --color-line: rgb(22 35 27 / 0.16);
+  --color-line-light: rgb(255 255 255 / 0.28);
+  --color-rule: rgb(31 58 147 / 0.17);
+  --color-margin: rgb(180 83 42 / 0.45);
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  /* Fonts */
-  --font-display: 'Instrument Serif', 'Times New Roman', serif; /* ERA: Ambroise Francois Std */
-  --font-script: 'Pinyon Script', cursive; /* ERA: Sloop Script Three */
-  --font-sans: 'Archivo', system-ui, sans-serif; /* ERA: Maison Neue Extended */
+  --font-display: 'Big Shoulders Display', Impact, sans-serif;
+  --font-ticket: 'Big Shoulders Text', 'Big Shoulders Display', sans-serif;
+  --font-hand: 'Kalam', 'Comic Sans MS', cursive; /* stand-in until Shen's own handwriting */
+  --font-sans: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-sinhala: 'Noto Sans Sinhala', sans-serif;
+  --font-tamil: 'Noto Sans Tamil', sans-serif;
 
-  /* Type scale (fluid). Display sizes are set in caps with tight leading. */
-  --text-display-xl: clamp(3.25rem, 10.5vw, 10.5rem);
-  --text-display-xl--line-height: 0.88;
-  --text-display-hero: clamp(3.25rem, 8.6vw, 9.5rem);
-  --text-display-hero--line-height: 0.88;
-  --text-display-lg: clamp(2.75rem, 7vw, 7rem);
-  --text-display-lg--line-height: 0.9;
-  --text-display-md: clamp(2.125rem, 4.6vw, 4.5rem);
-  --text-display-md--line-height: 0.95;
-  --text-display-sm: clamp(1.625rem, 2.6vw, 2.5rem);
-  --text-display-sm--line-height: 1;
-  --text-script-lg: clamp(2.75rem, 6.5vw, 6.5rem);
-  --text-script-lg--line-height: 1;
-  --text-script-md: clamp(2rem, 3.6vw, 3.5rem);
-  --text-script-md--line-height: 1.1;
+  /* Display sizes are condensed caps, so they can run larger than a regular face. */
+  --text-display-hero: clamp(2.75rem, 7.2vw, 6.75rem);
+  --text-display-hero--line-height: 0.86;
+  --text-display-lg: clamp(2.6rem, 6.6vw, 6rem);
+  --text-display-lg--line-height: 0.88;
+  --text-display-md: clamp(2rem, 4.2vw, 3.75rem);
+  --text-display-md--line-height: 0.9;
+  --text-display-sm: clamp(1.45rem, 2.3vw, 2.1rem);
+  --text-display-sm--line-height: 0.95;
+  --text-hand-lg: clamp(1.45rem, 2.5vw, 2.1rem);
+  --text-hand-lg--line-height: 1.2;
+  --text-hand: clamp(1.1rem, 1.5vw, 1.35rem);
+  --text-hand--line-height: 1.25;
   --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.6;
   --text-body: 1rem;
   --text-body--line-height: 1.6;
   --text-small: 0.875rem;
   --text-small--line-height: 1.5;
-  --text-label: 0.75rem;
-  --text-label--line-height: 1.3;
-  --text-label--letter-spacing: 0.14em;
+  --text-label: 0.8rem;
+  --text-label--line-height: 1.25;
+  --text-label--letter-spacing: 0.06em;
 
-  /* Letter spacing / width */
-  --tracking-display: -0.01em;
-  --tracking-label: 0.14em;
-
-  /* Spacing additions (Tailwind's numeric scale stays available) */
   --spacing-gutter: clamp(1rem, 4vw, 3rem);
-  --spacing-section: clamp(5rem, 12vw, 10rem);
-  --spacing-header: 4.5rem;
+  --spacing-section: clamp(4.5rem, 10vw, 8.5rem);
+  --spacing-header: 4.75rem;
 
-  /* Layout */
-  --container-page: 90rem;
+  --container-page: 88rem;
   --container-prose: 38rem;
 
-  /* Radii: ERA is square-edged; pills for small controls only. */
   --radius-none: 0;
   --radius-sm: 2px;
   --radius-pill: 999px;
 
-  /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
@@ -79,58 +77,45 @@
   --duration-slow: 900ms;
 }
 
-/* Archivo is variable on the width axis: these give the Maison Neue Extended look. */
-:root {
-  --stretch-body: 108%;
-  --stretch-label: 125%;
-}
-
 @layer base {
   html {
     background: var(--color-paper);
     color: var(--color-ink);
     -webkit-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
-
   body {
     font-family: var(--font-sans);
-    font-stretch: var(--stretch-body);
     font-size: var(--text-body);
     line-height: var(--text-body--line-height);
     background: var(--color-paper);
   }
-
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: var(--tracking-display);
+    font-weight: 900;
     text-transform: uppercase;
+    letter-spacing: 0.005em;
     text-wrap: balance;
   }
-
+  h3 {
+    font-weight: 800;
+  }
   p {
     text-wrap: pretty;
   }
-
   a {
     color: inherit;
   }
-
   :focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
-    border-radius: var(--radius-sm);
   }
-
   ::selection {
-    background: var(--color-sky);
+    background: var(--color-ticket-yellow);
     color: var(--color-ink);
   }
-
   img,
   video {
     display: block;
@@ -139,7 +124,6 @@
   }
 }
 
-/* Shared components. Section-specific styles stay next to their markup as utilities. */
 @layer components {
   .wrap {
     width: 100%;
@@ -148,171 +132,165 @@
     padding-inline: var(--spacing-gutter);
   }
 
-  .label {
-    font-family: var(--font-sans);
-    font-stretch: var(--stretch-label);
-    font-size: var(--text-label);
-    line-height: var(--text-label--line-height);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  .script {
-    font-family: var(--font-script);
+  /* Handwriting (ballpoint) */
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 400;
+    color: var(--color-ballpoint);
     text-transform: none;
     letter-spacing: 0;
-    font-weight: 400;
+  }
+  .on-dark .hand,
+  .hand.is-light {
+    color: var(--color-ticket-yellow);
   }
 
-  /* ERA's main button: underlined display serif in caps, arrow nudges on hover. */
-  .btn-link {
+  /* Small printed text (ticket type) */
+  .label {
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  /* Exercise-book paper: blue rules and a red margin line */
+  .ruled {
+    background:
+      linear-gradient(
+        to right,
+        transparent calc(var(--spacing-gutter) + 2rem),
+        var(--color-margin) calc(var(--spacing-gutter) + 2rem),
+        var(--color-margin) calc(var(--spacing-gutter) + 2rem + 1px),
+        transparent calc(var(--spacing-gutter) + 2rem + 1px)
+      ),
+      repeating-linear-gradient(to bottom, transparent 0 35px, var(--color-rule) 35px 36px),
+      var(--color-paper);
+  }
+
+  /* A paper note stuck onto a photo or page */
+  .note {
+    position: relative;
+    padding: 1rem 1.15rem 1.2rem;
+    background: var(--color-paper);
+    color: var(--color-ballpoint);
+    font-family: var(--font-hand);
+    font-size: var(--text-hand);
+    line-height: var(--text-hand--line-height);
+    rotate: var(--r, 2deg);
+    box-shadow: 0 18px 30px -18px rgb(0 0 0 / 0.45), 0 0 0 1px rgb(0 0 0 / 0.04);
+  }
+
+  /* A photo print with a white border and a handwritten caption */
+  .print {
+    position: relative;
+    padding: 0.55rem 0.55rem 2.1rem;
+    background: var(--color-paper);
+    rotate: var(--r, 0deg);
+    box-shadow: 0 16px 30px -16px rgb(0 0 0 / 0.45), 0 0 0 1px rgb(0 0 0 / 0.05);
+  }
+  .print > img,
+  .print > .ph {
+    width: 100%;
+    aspect-ratio: var(--ratio, 1);
+    object-fit: cover;
+  }
+  .print > figcaption,
+  .print > .caption {
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.4rem;
+    font-family: var(--font-hand);
+    font-size: 1.05rem;
+    line-height: 1.2;
+    color: var(--color-ballpoint);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Rubber stamp */
+  .stamp {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border: 2px solid currentColor;
+    color: var(--color-laterite-deep);
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    rotate: var(--r, -10deg);
+  }
+
+  /* Buttons */
+  .btn-ticket {
     display: inline-flex;
     align-items: center;
-    gap: 0.6em;
-    font-family: var(--font-display);
-    font-size: var(--text-display-sm);
-    line-height: 1;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-ticket-yellow);
+    color: var(--color-ink);
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+    transition: transform var(--duration-base) var(--ease-out-expo);
+  }
+  .btn-ticket:hover {
+    transform: rotate(-2deg) translateY(-2px);
+  }
+  .btn-ink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+  .btn-ink:hover {
+    background: var(--color-laterite-deep);
+  }
+  .link-hand {
+    font-family: var(--font-hand);
+    font-size: var(--text-hand);
+    color: inherit;
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
-    transition: text-underline-offset var(--duration-base) var(--ease-out-expo);
-  }
-  .btn-link:hover {
-    text-underline-offset: 0.3em;
-  }
-  .btn-link .arrow {
-    transition: translate var(--duration-base) var(--ease-out-expo);
-  }
-  .btn-link:hover .arrow {
-    translate: 0.25em 0;
+    text-underline-offset: 0.25em;
   }
 
-  /* The one solid button: "Get a free quote". Ink on paper; .is-light flips it over photos. */
-  .btn-solid {
-    display: inline-flex;
-    white-space: nowrap;
-    align-items: center;
-    gap: 0.75rem;
-    min-height: 3.25rem;
-    padding: 0 1.5rem;
-    border-radius: var(--radius-pill);
-    background: var(--color-ink);
-    color: var(--color-paper);
-    font-family: var(--font-sans);
-    font-stretch: var(--stretch-label);
-    font-size: var(--text-label);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    font-weight: 600;
-    text-decoration: none;
-    transition:
-      background-color var(--duration-fast) var(--ease-out),
-      color var(--duration-fast) var(--ease-out);
-  }
-  .btn-solid:hover {
-    background: var(--color-plum);
-  }
-  .btn-solid.is-light {
-    background: var(--color-paper);
-    color: var(--color-ink);
-  }
-  .btn-solid.is-light:hover {
-    background: var(--color-white);
-  }
-
-  /* Header pill ("Plan my tour") with the arrow in a circle (Columbus reference). */
-  .btn-pill {
-    display: inline-flex;
-    white-space: nowrap;
-    align-items: center;
-    gap: 0.75rem;
-    min-height: 2.75rem;
-    padding: 0.25rem 0.25rem 0.25rem 1.25rem;
-    border: 1px solid currentColor;
-    border-radius: var(--radius-pill);
-    font-family: var(--font-sans);
-    font-stretch: var(--stretch-label);
-    font-size: var(--text-label);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .btn-pill .dot {
-    display: grid;
-    place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: var(--radius-pill);
-    background: var(--color-ink);
-    color: var(--color-paper);
-    transition: rotate var(--duration-base) var(--ease-out-expo);
-  }
-  .btn-pill:hover .dot {
-    rotate: -45deg;
-  }
-
-  /*
-   * Placeholder for a photo that hasn't been sourced yet. Same box (aspect ratio) as the final
-   * image so layout and motion can be reviewed. Swapped in Phase 6.
-   */
+  /* Placeholder for a photo not sourced yet */
   .ph {
     position: relative;
     display: grid;
     place-items: end start;
     overflow: hidden;
-    background:
-      linear-gradient(160deg, rgb(181 206 219 / 0.9), rgb(23 35 59 / 0.85)),
-      var(--color-ink);
+    background: linear-gradient(160deg, var(--color-mist), var(--color-ink-soft));
     color: var(--color-paper);
-  }
-  .ph::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      135deg,
-      transparent 0 22px,
-      rgb(243 243 236 / 0.06) 22px 23px
-    );
   }
   .ph > span {
     position: relative;
-    padding: 1rem;
+    padding: 0.75rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Lenis recommended styles */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* ---------- Site chrome: header, badge, menu, scroll counter (Phase 1) ---------- */
-
-/*
- * --chrome-fg / --chrome-bg drive the header and counter. Default (and with JS off) is solid
- * ink-on-paper. On a page with a photo hero (<html class="has-hero">) the header sits
- * transparent over the photo until header.js adds .past-hero.
- */
+/* ---------- Site chrome ---------- */
 :root {
   --chrome-fg: var(--color-ink);
   --chrome-bg: var(--color-paper);
@@ -340,17 +318,8 @@ html.lenis body {
   .site-header a {
     text-decoration: none;
   }
-  .site-header .btn-pill .dot {
-    background: var(--chrome-fg);
-    color: var(--color-ink);
-  }
-  .past-hero .site-header .btn-pill .dot,
-  html:not(.has-hero) .site-header .btn-pill .dot,
-  html:not(.js) .site-header .btn-pill .dot {
-    color: var(--color-paper);
-  }
 
-  /* Rotating circular badge */
+  /* Rubber-stamp postmark logo */
   .badge {
     position: relative;
     display: grid;
@@ -361,10 +330,14 @@ html.lenis body {
   }
   @media (min-width: 768px) {
     .badge {
-      width: 6rem;
-      height: 6rem;
-      margin-top: 1.5rem;
+      width: 5.75rem;
+      height: 5.75rem;
+      margin-top: 1.25rem;
     }
+  }
+  .past-hero .badge,
+  html:not(.has-hero) .badge {
+    color: var(--color-laterite-deep);
   }
   .badge-ring {
     position: absolute;
@@ -375,58 +348,67 @@ html.lenis body {
   }
   .badge-ring text {
     fill: currentColor;
-    font-family: var(--font-sans);
+    font-family: var(--font-ticket);
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  .badge-ring circle {
+    fill: none;
+    stroke: currentColor;
+  }
   .badge-mark {
-    font-family: var(--font-script);
-    font-size: 1.9rem;
-    line-height: 1;
-    translate: 0 0.08em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 0.85;
+    text-align: center;
+    text-transform: uppercase;
   }
   @media (min-width: 768px) {
     .badge-mark {
-      font-size: 2.9rem;
+      font-size: 1.45rem;
     }
   }
 
-  /* Menu button: two lines + label */
   .menu-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
     min-height: 2.75rem;
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     text-decoration: none;
   }
   .menu-icon {
     display: grid;
     gap: 6px;
-    width: 1.5rem;
+    width: 1.6rem;
   }
   .menu-icon i {
     display: block;
-    height: 1px;
+    height: 2px;
     background: currentColor;
   }
   .menu-icon.is-close i:first-child {
     rotate: 45deg;
-    translate: 0 3.5px;
+    translate: 0 4px;
   }
   .menu-icon.is-close i:last-child {
     rotate: -45deg;
-    translate: 0 -3.5px;
+    translate: 0 -4px;
   }
 
-  /* Full-screen menu */
   .site-menu {
     position: fixed;
     inset: 0;
     z-index: 50;
     overflow-y: auto;
     overscroll-behavior: contain;
-    background: var(--color-ink);
+    background: var(--color-laterite);
     color: var(--color-paper);
     visibility: hidden;
     opacity: 0;
@@ -453,246 +435,308 @@ html.lenis body {
   .menu-links a {
     display: flex;
     align-items: baseline;
-    gap: 1.25rem;
-    padding-block: 0.15em;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.12em;
     font-family: var(--font-display);
+    font-weight: 900;
     font-size: var(--text-display-lg);
     line-height: var(--text-display-lg--line-height);
     text-transform: uppercase;
-    transition: padding-left var(--duration-base) var(--ease-out-expo);
+    transition: padding-left var(--duration-base) var(--ease-out-expo), color var(--duration-fast);
   }
   .menu-links a:hover,
   .menu-links a:focus-visible {
-    font-style: italic;
-    padding-left: 0.4em;
+    padding-left: 0.3em;
+    color: var(--color-ticket-yellow);
   }
-  .menu-links .label {
-    font-style: normal;
-    opacity: 0.8;
+  .menu-links .hand {
+    font-size: var(--text-hand);
+    color: var(--color-ticket-yellow);
   }
 
-  /* Left-edge scroll counter */
-  .scroll-counter {
+  /* Odometer: rolls up as you go down the page (decorative) */
+  .odometer {
     display: none;
   }
   @media (min-width: 1024px) {
-    .js .scroll-counter {
+    .js .odometer {
       position: fixed;
-      left: calc(var(--spacing-gutter) / 2 - 0.5rem);
+      left: 0.75rem;
       top: 50%;
       z-index: 30;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
       translate: 0 -50%;
       color: var(--chrome-fg);
-      font-family: var(--font-sans);
-      font-stretch: var(--stretch-label);
-      font-size: 0.625rem;
-      letter-spacing: var(--tracking-label);
-      font-variant-numeric: tabular-nums;
-      transition: color var(--duration-base) var(--ease-out);
       pointer-events: none;
+      transition: color var(--duration-base) var(--ease-out);
     }
   }
-  .scroll-counter-track {
-    position: relative;
-    width: 1px;
-    height: 4.5rem;
-    background: currentColor;
-    opacity: 0.35;
+  .odometer-digits {
+    display: grid;
+    gap: 2px;
+    padding: 3px;
+    background: var(--color-ink);
+    border-radius: 3px;
   }
-  .scroll-counter-fill {
-    position: absolute;
-    inset: 0;
-    background: currentColor;
-    transform-origin: top;
-    scale: 1 0;
+  .odometer-digit {
+    width: 1.35rem;
+    height: 1.6rem;
+    overflow: hidden;
+    background: #0d1510;
+    color: var(--color-paper);
+    font-family: var(--font-ticket);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    text-align: center;
   }
-
-  /* ---------- Hero (Phase 1) ---------- */
-  .hero-photo {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity var(--duration-slow) var(--ease-in-out);
+  .odometer-digit span {
+    display: block;
   }
-  .hero-photo.is-active {
-    opacity: 1;
-  }
-  .ph.is-hills {
-    background:
-      linear-gradient(170deg, rgb(181 206 219 / 0.55), rgb(52 12 36 / 0.92)),
-      var(--color-ink);
-  }
-  .hero-scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgb(23 35 59 / 0.7), rgb(23 35 59 / 0) 65%),
-      linear-gradient(to bottom, rgb(23 35 59 / 0.35), rgb(23 35 59 / 0) 25%);
-    pointer-events: none;
-  }
-  .hero-toggle {
-    display: none;
-  }
-  .js .hero-toggle {
-    display: inline-flex;
-  }
-  .hero-toggle button {
-    font-family: var(--font-display);
-    font-size: var(--text-display-sm);
-    line-height: 1;
-    text-transform: uppercase;
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
-    text-decoration-color: transparent;
-    opacity: 0.75;
-    cursor: pointer;
-    transition:
-      opacity var(--duration-fast) var(--ease-out),
-      text-decoration-color var(--duration-fast) var(--ease-out);
-  }
-  .hero-toggle button[aria-pressed='true'] {
-    opacity: 1;
-    font-style: italic;
-    text-decoration-color: currentColor;
-  }
-  .hero-toggle button:hover {
-    opacity: 1;
+  .odometer .hand {
+    font-size: 0.95rem;
+    color: inherit;
+    writing-mode: vertical-rl;
+    rotate: 180deg;
   }
 }
 
-/* ---------- Section 3: zoom → three reasons (Phase 2) ---------- */
-/*
- * Static layout first (JS off, reduced motion, phones): photo, then a sky panel.
- * reasons.js adds .is-pinned on desktop for the pinned zoom + circle reveal.
- */
+/* ---------- 2. Hero ---------- */
 @layer components {
-  .reasons-photo {
-    aspect-ratio: 4 / 5;
-    margin: var(--spacing-section) var(--spacing-gutter) 0;
-    overflow: hidden;
-  }
-  @media (min-width: 768px) {
-    .reasons-photo {
-      aspect-ratio: 16 / 9;
-    }
-  }
-  .reasons-circle {
-    background: var(--color-sky);
-    color: var(--color-ink);
-    padding-block: var(--spacing-section);
-    margin-top: var(--spacing-section);
-  }
-  .reasons-title {
-    width: min(100%, 60rem);
-  }
-  .reasons-arch {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-  .reasons-arch text {
-    fill: currentColor;
-    font-family: var(--font-display);
-    font-size: 66px;
-    text-transform: uppercase;
-  }
-  .reasons-list {
+  .hero {
+    position: relative;
     display: grid;
-    gap: 2.5rem;
-    width: min(100%, 64rem);
-    margin-top: 2.5rem;
-  }
-  @media (min-width: 768px) {
-    .reasons-list {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      margin-top: 3.5rem;
-    }
-  }
-  .reasons-list p {
-    max-width: 18rem;
-    margin-inline: auto;
-  }
-
-  .reasons-stage.is-pinned {
-    position: relative;
-    height: 100svh;
+    grid-template-rows: 1fr auto;
+    min-height: 100svh;
     overflow: hidden;
-  }
-  .is-pinned .reasons-photo {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    aspect-ratio: auto;
-  }
-  .is-pinned .reasons-circle {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    padding: var(--spacing-header) 0 0;
-  }
-
-  /* ---------- Section 4: the route ---------- */
-  .route-map {
-    position: relative;
-  }
-  .route-svg {
-    display: none;
-  }
-  .route-rail {
-    position: absolute;
-    left: 0.4375rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 1px;
-    background: rgb(23 35 59 / 0.25);
-  }
-  .route-rail-fill {
-    position: absolute;
-    inset: 0;
     background: var(--color-ink);
-    transform-origin: top;
+    color: var(--color-paper);
   }
-  .route-stops {
-    display: grid;
-    gap: 2.25rem;
-  }
-  .route-stop {
+  .hero-photo {
     position: relative;
-    padding-left: 2.5rem;
+    grid-row: 1;
+    grid-column: 1;
+    min-height: 46svh;
+    overflow: hidden;
   }
-  .route-stop-inner {
-    display: grid;
-    gap: 0.35rem;
+  .hero-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 62%;
   }
-  .route-stop::before {
+  .hero-photo::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0.1rem;
-    width: 0.875rem;
-    height: 0.875rem;
-    border-radius: var(--radius-pill);
-    background: var(--color-ink);
-    box-shadow: 0 0 0 4px var(--color-sky);
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(22 35 27 / 0.5), transparent 35%);
   }
-  .route-name {
-    font-family: var(--font-display);
+  .hero-note {
+    position: absolute;
+    grid-row: 1;
+    z-index: 2;
+    right: clamp(1rem, 8vw, 9rem);
+    top: clamp(7rem, 22vh, 13rem);
+    width: min(16rem, 64vw);
+    font-size: var(--text-hand-lg);
+    line-height: var(--text-hand-lg--line-height);
+    --r: 3deg;
+  }
+  .hero-note svg {
+    position: absolute;
+    left: -3.4rem;
+    bottom: -2.4rem;
+    width: 4.5rem;
+    overflow: visible;
+  }
+  .hero-slab {
+    position: relative;
+    grid-row: 2;
+    grid-column: 1;
+    background: var(--color-laterite);
+    padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(1.75rem, 3.5vw, 3rem);
+  }
+  .hero-title {
+    font-size: var(--text-display-hero);
+    line-height: var(--text-display-hero--line-height);
+  }
+  .hero-title span {
+    display: block;
+  }
+  @media (min-width: 900px) {
+    .hero-title span {
+      white-space: nowrap;
+    }
+  }
+  .hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 1.25rem;
+  }
+  .hero-foot p {
+    max-width: 34rem;
+    font-size: var(--text-body-lg);
+  }
+  @media (max-width: 767.98px) {
+    .hero-note {
+      right: 1rem;
+      top: 6.5rem;
+      font-size: var(--text-hand);
+    }
+    .hero-note svg {
+      display: none;
+    }
+  }
+}
+
+/* ---------- 3. Three reasons (static until the Sigiriya climb, R4) ---------- */
+@layer components {
+  .reasons {
+    position: relative;
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .reasons-stage {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    display: grid;
+    align-items: end;
+  }
+  .reasons-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .reasons-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(22 35 27 / 0.85), rgb(22 35 27 / 0.1) 55%);
+  }
+  .reasons-inner {
+    position: relative;
+    z-index: 1;
+    padding-block: calc(var(--spacing-header) + 3rem) clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .reasons-title {
+    max-width: 12ch;
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .reasons-notes {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  @media (min-width: 900px) {
+    .reasons-notes {
+      grid-template-columns: repeat(3, minmax(0, 20rem));
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+  }
+  .reasons-notes .note h3 {
+    color: var(--color-ink);
     font-size: var(--text-display-sm);
+    line-height: var(--text-display-sm--line-height);
+  }
+  .reasons-notes .note p {
+    margin-top: 0.5rem;
+  }
+  .note-num {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.4rem;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--color-laterite);
     line-height: 1;
+  }
+}
+
+/* ---------- 4. The road book (route) + hills ---------- */
+@layer components {
+  .book {
+    padding-block: var(--spacing-section);
+  }
+  .book-head {
+    display: grid;
+    gap: 0.75rem;
+    padding-left: 3rem;
+  }
+  .book-head h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .book-head .hand {
+    font-size: var(--text-hand-lg);
+    rotate: -1.5deg;
+    transform-origin: left;
+  }
+  .book-intro {
+    max-width: 30rem;
+    margin-top: 0.5rem;
+    color: var(--color-ink-soft);
+  }
+  .map {
+    position: relative;
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+    padding-left: 3rem;
+  }
+  .map-svg,
+  .map .print {
+    display: none;
+  }
+  .stops {
+    display: grid;
+    gap: 1.6rem;
+  }
+  .stop-name {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+    line-height: 0.95;
     text-transform: uppercase;
   }
-
-  /* Desktop: the wavy line with labels placed on its stops */
-  @media (min-width: 768px) {
-    .route-map {
-      aspect-ratio: 1200 / 420;
+  .stop-local {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    color: var(--color-ink-soft);
+  }
+  .stop-local [lang='si'] {
+    font-family: var(--font-sinhala);
+  }
+  .stop-local [lang='ta'] {
+    font-family: var(--font-tamil);
+  }
+  .stop .hand {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.15rem;
+  }
+  .stop .hand.is-todo {
+    color: rgb(31 58 147 / 0.5);
+  }
+  @media (min-width: 900px) {
+    .map {
+      aspect-ratio: 1200 / 560;
+      padding-left: 0;
     }
-    .route-svg {
+    .map-svg {
       display: block;
       position: absolute;
       inset: 0;
@@ -700,73 +744,89 @@ html.lenis body {
       height: 100%;
       overflow: visible;
     }
-    .route-ghost {
+    .map-svg .ink {
       fill: none;
       stroke: var(--color-ink);
-      stroke-opacity: 0.22;
-      stroke-width: 1.5;
-      stroke-dasharray: 2 8;
+      stroke-width: 3.2;
       stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: url(#rough);
     }
-    .route-leg {
-      fill: none;
+    .map-svg .dot {
+      fill: var(--color-laterite);
       stroke: var(--color-ink);
       stroke-width: 2;
-      stroke-linecap: round;
     }
-    .route-dot {
-      fill: var(--color-ink);
-      stroke: var(--color-sky);
-      stroke-width: 4;
-      transform-box: fill-box;
-      transform-origin: center;
+    .map .print {
+      display: block;
+      position: absolute;
+      width: clamp(8rem, 14vw, 12.5rem);
     }
-    .route-rail {
-      display: none;
-    }
-    .route-stops {
+    .stops {
       position: absolute;
       inset: 0;
       display: block;
     }
-    .route-stop {
+    .stop {
       position: absolute;
       left: var(--x);
       top: var(--y);
       width: max-content;
-      padding: 0;
-      text-align: center;
-      translate: -50% calc(-100% - 1.5rem);
+      max-width: 13rem;
+      translate: -50% calc(-100% - 1.2rem);
     }
-    .route-stop.is-below {
-      translate: -50% 1.5rem;
+    .stop.is-below {
+      translate: -50% 1.2rem;
     }
-    .route-stop.is-first {
-      text-align: left;
-      translate: -1.25rem 1.5rem;
+    .stop.is-first {
+      max-width: 9.5rem;
+      translate: -0.8rem 1.2rem;
     }
-    .route-stop.is-last {
+    .stop.is-last {
+      translate: calc(-100% + 0.8rem) calc(-100% - 1.2rem);
       text-align: right;
-      translate: calc(-100% + 1.25rem) calc(-100% - 1.5rem);
     }
-    .route-stop::before {
-      display: none;
+    .stop.is-last.is-below {
+      translate: calc(-100% + 0.8rem) 1.2rem;
+    }
+    .stop.is-last .stop-local {
+      justify-content: flex-end;
+    }
+    .stop-name {
+      font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+    }
+    .stop .hand {
+      font-size: 1rem;
+    }
+  }
+  .van {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .js .van {
+      display: block;
     }
   }
 
-  /* Clouds part onto the hills */
   .hills {
     position: relative;
-    height: max(36rem, 100svh);
+    height: max(34rem, 100svh);
     overflow: hidden;
-    background: linear-gradient(to bottom, var(--color-sky), var(--color-paper) 92%);
+    background: linear-gradient(to bottom, var(--color-paper), var(--color-mist) 45%, var(--color-paper) 96%);
   }
   .hills-text {
     position: absolute;
     inset: 18% 0 auto;
     z-index: 1;
     text-align: center;
-    color: var(--color-ink);
+  }
+  .hills-text .big {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+    text-transform: uppercase;
   }
   .hills-layer {
     position: absolute;
@@ -780,13 +840,13 @@ html.lenis body {
     fill: var(--color-ink);
   }
   [data-hills-layer='far'] path {
-    fill-opacity: 0.16;
+    fill-opacity: 0.14;
   }
   [data-hills-layer='mid'] path {
-    fill-opacity: 0.3;
+    fill-opacity: 0.28;
   }
   [data-hills-layer='near'] path {
-    fill-opacity: 0.5;
+    fill-opacity: 0.55;
   }
   [data-hills-layer='front'] path {
     fill: var(--color-paper);
@@ -799,13 +859,12 @@ html.lenis body {
     pointer-events: none;
   }
   .cloud ellipse {
-    fill: var(--color-white);
-    fill-opacity: 0.92;
+    fill: var(--color-paper);
+    fill-opacity: 0.94;
   }
   .cloud ellipse.is-soft {
     fill-opacity: 0.7;
   }
-  /* Resting (parted) positions; hills.js starts them closed over the text and parts them. */
   .cloud.is-left {
     top: 8%;
     left: -48%;
@@ -817,71 +876,126 @@ html.lenis body {
   .cloud.is-low {
     bottom: 12%;
     left: 15%;
-    width: 70%;
     opacity: 0.55;
   }
 }
 
-/* ---------- Section 5: tours (Phase 3) ---------- */
+/* ---------- 5. Tours: tickets + sticky print ---------- */
 @layer components {
-  .tours-list {
-    border-top: 1px solid var(--color-line);
+  .tours {
+    background: var(--color-laterite);
+    color: var(--color-paper);
+    padding-block: var(--spacing-section);
   }
-  .tour-item {
-    border-bottom: 1px solid var(--color-line);
-  }
-  .tour-link {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem 1.25rem;
-    align-items: start;
-    padding-block: 1.75rem;
-    text-decoration: none;
-  }
-  .tour-index {
-    padding-top: 0.6em;
-    color: var(--color-ink-muted);
-  }
-  .tour-title {
-    font-size: var(--text-display-md);
-    line-height: var(--text-display-md--line-height);
-    transition: color var(--duration-base) var(--ease-out);
-  }
-  .tour-facts {
+  .tours-head {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 1.25rem;
-    margin-top: 0.9rem;
-    color: var(--color-ink-muted);
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
   }
-  .tour-arrow {
-    font-family: var(--font-display);
-    font-size: var(--text-display-sm);
+  .tours-head h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .tours-head .hand {
+    max-width: 22rem;
+    font-size: var(--text-hand-lg);
+    line-height: var(--text-hand-lg--line-height);
+    rotate: -2deg;
+  }
+  .tours-grid {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  .tours-list {
+    display: grid;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .ticket {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.9rem;
+    min-height: 11.5rem;
+    padding: 1.1rem 1.3rem 1rem;
+    background: var(--c, var(--color-ticket-green));
+    color: var(--color-ink);
+    text-decoration: none;
+    font-family: var(--font-ticket);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: 0 16px 30px -18px rgb(0 0 0 / 0.6);
+    rotate: var(--r, 0deg);
+    transition: transform var(--duration-base) var(--ease-out-expo);
+  }
+  .tour-item:nth-child(4n + 1) .ticket { --c: var(--color-ticket-green); --r: -0.8deg; }
+  .tour-item:nth-child(4n + 2) .ticket { --c: var(--color-ticket-pink); --r: 0.6deg; }
+  .tour-item:nth-child(4n + 3) .ticket { --c: var(--color-ticket-yellow); --r: -0.4deg; }
+  .tour-item:nth-child(4n + 4) .ticket { --c: var(--color-ticket-blue); --r: 1deg; }
+  .ticket:hover,
+  .ticket:focus-visible,
+  .tour-item.is-active .ticket {
+    transform: translate(10px, -4px) rotate(-0.6deg);
+  }
+  .ticket::after {
+    content: '';
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    width: 0.95rem;
+    height: 0.95rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-laterite);
+    translate: 0 -50%;
+    scale: 0;
+    transition: scale 0.25s var(--ease-out-expo);
+  }
+  .ticket:hover::after,
+  .ticket:focus-visible::after,
+  .tour-item.is-active .ticket::after {
+    scale: 1;
+  }
+  .t-top,
+  .t-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .t-route {
+    align-self: center;
+  }
+  .t-route small {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .t-route h3 {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+  .t-fare {
+    text-align: right;
+  }
+  .t-fare b {
+    display: block;
+    font-size: 1.4rem;
     line-height: 1;
-    padding-top: 0.2em;
-    transition: translate var(--duration-base) var(--ease-out-expo);
-  }
-  .tour-link:hover .tour-arrow,
-  .tour-link:focus-visible .tour-arrow {
-    translate: 0.3em 0;
   }
   .tour-photo-inline {
-    aspect-ratio: 4 / 3;
-    margin-bottom: 1.75rem;
+    margin-top: 1rem;
   }
   .tours-panel {
     display: none;
   }
-
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .tours-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 5vw, 5rem);
       align-items: start;
-    }
-    .tour-link {
-      padding-block: clamp(2.5rem, 7vh, 4.5rem);
     }
     .tour-photo-inline {
       display: none;
@@ -893,50 +1007,58 @@ html.lenis body {
     }
     .tours-frame {
       position: relative;
-      height: calc(100svh - var(--spacing-header) - 4rem);
-      max-height: 46rem;
-      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      max-height: calc(100svh - var(--spacing-header) - 4rem);
+      margin-inline: auto;
     }
     .tours-photo {
       position: absolute;
       inset: 0;
-      place-items: start;
       opacity: 0;
-      clip-path: inset(0 0 100% 0);
+      rotate: var(--r, 2deg);
       transition:
         opacity var(--duration-slow) var(--ease-in-out),
-        clip-path var(--duration-slow) var(--ease-out-expo);
+        rotate var(--duration-slow) var(--ease-out-expo);
     }
     .tours-photo.is-active {
       opacity: 1;
-      clip-path: inset(0 0 0 0);
     }
-    .tours-price {
+    .tours-photo > img,
+    .tours-photo > .ph {
+      height: calc(100% - 2.1rem);
+      aspect-ratio: auto;
+    }
+    .tours-photo .stamp {
       position: absolute;
-      left: 1.5rem;
-      bottom: 1.5rem;
-      color: var(--color-paper);
-    }
-    /* Active-item styling only with JS (without it every item stays full strength). */
-    .js .tour-title {
-      color: var(--color-ink-muted);
-    }
-    .js .tour-item.is-active .tour-title {
-      color: var(--color-ink);
-      font-style: italic;
+      right: -1rem;
+      top: 1.5rem;
+      background: var(--color-paper);
     }
   }
+  .tours-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+}
 
-  /* ---------- Section 6: where to go ---------- */
+/* ---------- 6. Where to go ---------- */
+@layer components {
   .where {
     overflow: hidden;
+  }
+  .where-head {
+    position: relative;
+    padding-top: var(--spacing-section);
   }
   .where-title {
     position: relative;
     z-index: 1;
     display: grid;
-    font-size: var(--text-display-xl);
-    line-height: var(--text-display-xl--line-height);
+    font-size: clamp(2.5rem, 9vw, 8rem);
+    line-height: 0.86;
   }
   .where-line {
     display: block;
@@ -946,32 +1068,20 @@ html.lenis body {
     padding-left: 12%;
   }
   .where-line[data-where-line='2'] {
-    padding-left: 30%;
+    padding-left: 26%;
   }
-  .where-title .script {
-    font-size: 0.62em;
+  .where-line .hand {
+    font-size: 0.42em;
+    vertical-align: 0.35em;
   }
   .where-flower {
     position: absolute;
     z-index: 2;
-    right: 4%;
-    top: 12%;
-    width: clamp(7rem, 22vw, 20rem);
-    height: auto;
-    pointer-events: none;
-  }
-  .where-flower.is-small {
-    right: auto;
-    left: 52%;
-    top: auto;
-    bottom: 14%;
-    width: clamp(4rem, 10vw, 9rem);
-  }
-  .where-flower .petals path {
-    fill: var(--color-bloom);
-  }
-  .where-flower .heart {
-    fill: var(--color-paper);
+    right: 3%;
+    top: 18%;
+    width: clamp(9rem, 22vw, 19rem);
+    --r: 6deg;
+    --ratio: 4 / 5;
   }
   .where-intro {
     position: relative;
@@ -979,25 +1089,25 @@ html.lenis body {
     max-width: 30rem;
     margin-top: 2.5rem;
     margin-left: auto;
+    font-size: var(--text-body-lg);
   }
   @media (max-width: 767.98px) {
     .where-line[data-where-line='2'] {
-      padding-left: 18%;
+      padding-left: 8%;
     }
     .where-flower {
-      top: 4%;
-      right: -4%;
-    }
-    .where-flower.is-small {
-      display: none;
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 10rem;
+      margin: 2rem 1rem 0 auto;
     }
     .where-intro {
       margin-left: 0;
     }
   }
-
   .where-strip {
-    padding-block: 4rem var(--spacing-section);
+    padding-block: 3.5rem var(--spacing-section);
   }
   .where-viewport {
     overflow-x: auto;
@@ -1011,17 +1121,36 @@ html.lenis body {
   }
   .where-track {
     display: flex;
-    gap: clamp(1rem, 2vw, 2rem);
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
     width: max-content;
+    padding-block: 1.5rem;
   }
   .dest-card {
-    width: clamp(15rem, 26vw, 24rem);
+    width: clamp(14rem, 24vw, 21rem);
     scroll-snap-align: start;
+    --ratio: 4 / 5;
   }
-  .dest-photo {
-    aspect-ratio: 4 / 5;
+  .dest-card:nth-child(odd) {
+    --r: -1.5deg;
   }
-  /* Desktop with motion: where.js pins the strip and moves the track sideways with scroll. */
+  .dest-card:nth-child(even) {
+    --r: 1.5deg;
+    margin-top: 2rem;
+  }
+  .dest-card .meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .dest-card .meta b {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--text-display-sm);
+    line-height: 1;
+    text-transform: uppercase;
+  }
   .where-strip.is-pinned {
     display: flex;
     align-items: center;
@@ -1035,247 +1164,371 @@ html.lenis body {
   }
 }
 
-/* ---------- Sections 7–10 (Phase 4) ---------- */
+/* ---------- 7–10 ---------- */
 @layer components {
   /* 7. Meet your guide */
+  .guide {
+    padding-block: var(--spacing-section);
+  }
   .guide-grid {
     display: grid;
     gap: 2.5rem;
   }
   .guide-portrait {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
+    width: min(100%, 26rem);
+    --r: -2deg;
+    --ratio: 4 / 5;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .guide-grid {
       grid-template-columns: 5fr 6fr;
       gap: clamp(2.5rem, 6vw, 6rem);
-      align-items: end;
+      align-items: center;
     }
+  }
+  .guide-copy h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .guide-copy .hand {
+    display: block;
+    font-size: var(--text-hand-lg);
+    margin-top: 0.5rem;
+  }
+  .guide-letter {
+    margin-top: 2rem;
+    padding: 1.5rem 1.5rem 1.75rem 3rem;
   }
   .guide-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 1rem;
+    gap: 2.5rem 1.25rem;
+    margin-top: clamp(3.5rem, 7vw, 5.5rem);
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .guide-cards {
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.5rem;
     }
   }
-  .guide-card-photo {
-    aspect-ratio: 1;
+  .guide-card {
+    --ratio: 1;
+  }
+  .guide-card:nth-child(odd) {
+    --r: -1.2deg;
+  }
+  .guide-card:nth-child(even) {
+    --r: 1.4deg;
+  }
+  .guide-card .ph {
     place-items: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.4rem;
+  }
+  .guide-card p {
+    margin-top: 0.9rem;
   }
 
-  /* 8. Numbers */
-  .numbers-grid {
+  /* 8. Logbook */
+  .logbook {
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+  .logbook-page {
+    padding: 2.5rem 1.5rem 2.5rem 3.25rem;
+    border-block: 1px solid var(--color-line);
+  }
+  .logbook-page h2 {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    text-transform: none;
+    color: var(--color-ballpoint);
+    font-size: var(--text-hand-lg);
+  }
+  .logbook-rows {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    margin-top: 1rem;
   }
-  @media (min-width: 768px) {
-    .numbers-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  .numbers-tile {
+  .logbook-row {
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
+    align-items: baseline;
     gap: 0.75rem;
-    padding: 2.5rem 1rem 2.5rem 0;
-    border-left: 1px solid var(--color-line);
-    padding-left: 1rem;
+    min-height: 3rem;
   }
-  .numbers-tile:nth-child(odd) {
-    border-left: 0;
-    padding-left: 0;
+  .logbook-row dt {
+    font-size: var(--text-body-lg);
   }
-  @media (min-width: 768px) {
-    .numbers-tile {
-      padding-block: 4rem;
-      padding-left: 1.5rem;
-    }
-    .numbers-tile:nth-child(odd) {
-      border-left: 1px solid var(--color-line);
-      padding-left: 1.5rem;
-    }
-    .numbers-tile:first-child {
-      border-left: 0;
-      padding-left: 0;
-    }
+  .logbook-row .leader {
+    flex: 1;
+    border-bottom: 2px dotted var(--color-ink-soft);
+    opacity: 0.45;
+    translate: 0 -0.3rem;
   }
-  .numbers-value {
-    font-family: var(--font-display);
-    font-size: var(--text-display-lg);
+  .logbook-row dd {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     line-height: 1;
+    color: var(--color-ballpoint);
     font-variant-numeric: tabular-nums;
   }
 
-  /* 9. Offers */
+  /* 9. Offers: ticket stubs */
+  .offers {
+    padding-block: var(--spacing-section);
+  }
+  .offers-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+  .offers-head h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
   .offers-grid {
     display: grid;
-    gap: 1px;
-    background: var(--color-line-light);
-    border: 1px solid var(--color-line-light);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: 1.5rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
   }
-  @media (min-width: 768px) {
-    .offers-grid {
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    }
+  .stub {
+    position: relative;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    background: var(--c, var(--color-ticket-yellow));
+    color: var(--color-ink);
+    mask: radial-gradient(circle at 0 50%, transparent 0.7rem, #000 0.75rem);
+    box-shadow: 0 14px 28px -18px rgb(0 0 0 / 0.5);
   }
-  .offer-card {
-    background: var(--color-ink);
-    padding: 2rem;
-  }
-  @media (min-width: 768px) {
-    .offer-card {
-      padding: 2.5rem;
-    }
-  }
-  .offer-value .font-display {
-    font-size: var(--text-display-xl);
+  .stub:nth-child(3n + 1) { --c: var(--color-ticket-yellow); }
+  .stub:nth-child(3n + 2) { --c: var(--color-ticket-green); }
+  .stub:nth-child(3n + 3) { --c: var(--color-ticket-blue); }
+  .stub-value {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 4.5rem);
     line-height: 0.9;
   }
-  .offer-value .script {
-    font-size: var(--text-script-md);
+  .stub-value .hand {
+    font-size: 0.45em;
+    color: var(--color-ballpoint);
+  }
+  .stub h3 {
+    margin-top: 0.75rem;
+    font-size: var(--text-display-sm);
+  }
+  .stub .stamp {
+    margin-top: 1rem;
+    --r: -4deg;
   }
 
-  /* 10. Guest journal: scattered on desktop, two columns on phones */
+  /* 10. Guest journal */
+  .journal {
+    background: var(--color-laterite);
+    color: var(--color-paper);
+    padding-block: var(--spacing-section);
+  }
+  .journal-head h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .journal-head .hand {
+    display: block;
+    font-size: var(--text-hand-lg);
+    color: var(--color-ticket-yellow);
+    margin-top: 0.4rem;
+  }
   .journal-board {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
   }
-  .journal-media {
-    aspect-ratio: 3 / 4;
+  .journal-card {
+    --ratio: 3 / 4;
+  }
+  .journal-card .ph {
     place-items: center;
-  }
-  .journal-media > .label {
-    position: absolute;
-    left: 0;
-    bottom: 0;
   }
   .journal-play {
     display: grid;
     place-items: center;
-    width: 3.5rem;
-    height: 3.5rem;
-    border: 1px solid currentColor;
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 2px solid currentColor;
     border-radius: var(--radius-pill);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding-left: 0.2rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .journal-board {
       grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: minmax(0, auto);
       gap: 0;
       row-gap: 3rem;
     }
-    .journal-card:nth-child(1) { grid-column: 1 / span 3; margin-top: 4rem; rotate: -2deg; }
-    .journal-card:nth-child(2) { grid-column: 5 / span 4; rotate: 1.5deg; }
-    .journal-card:nth-child(3) { grid-column: 10 / span 3; margin-top: 8rem; rotate: -1deg; }
-    .journal-card:nth-child(4) { grid-column: 2 / span 4; margin-top: -2rem; rotate: 2deg; }
-    .journal-card:nth-child(5) { grid-column: 8 / span 3; margin-top: 3rem; rotate: -2.5deg; }
-    .journal-card:nth-child(4) .journal-media,
-    .journal-card:nth-child(2) .journal-media {
-      aspect-ratio: 4 / 3;
-    }
+    .journal-card:nth-child(1) { grid-column: 1 / span 3; margin-top: 4rem; --r: -3deg; }
+    .journal-card:nth-child(2) { grid-column: 5 / span 4; --r: 2deg; --ratio: 4 / 3; }
+    .journal-card:nth-child(3) { grid-column: 10 / span 3; margin-top: 7rem; --r: -1.5deg; }
+    .journal-card:nth-child(4) { grid-column: 2 / span 4; margin-top: -1rem; --r: 2.5deg; --ratio: 4 / 3; }
+    .journal-card:nth-child(5) { grid-column: 8 / span 3; margin-top: 3rem; --r: -2.5deg; }
   }
 }
 
-/* ---------- Sections 11–14 (Phase 5) ---------- */
+/* ---------- 11–14 ---------- */
 @layer components {
-  /* 11. How it works */
+  /* 11. How it works: a real three-stop route */
+  .how {
+    padding-block: var(--spacing-section);
+  }
+  .how h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .how h2 .hand {
+    display: block;
+    font-size: 0.4em;
+    line-height: 1.2;
+  }
   .how-steps-wrap {
     position: relative;
-  }
-  .how-steps {
-    display: grid;
-    gap: 3rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
   }
   .how-line {
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-    height: 1px;
-    background: var(--color-line);
+    top: 1.6rem;
+    height: 0;
+    border-top: 3px dashed var(--color-ink);
+    opacity: 0.25;
   }
   .how-line-fill {
-    position: absolute;
-    inset: 0;
-    background: var(--color-ink);
-    transform-origin: left;
+    display: none;
   }
-  .how-step {
-    padding-top: 2rem;
+  .how-steps {
+    position: relative;
+    display: grid;
+    gap: 2.5rem;
   }
-  .how-num {
-    font-family: var(--font-display);
-    font-size: var(--text-display-lg);
-    line-height: 1;
-  }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .how-steps {
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(2rem, 4vw, 4rem);
     }
   }
-  @media (max-width: 767.98px) {
+  @media (max-width: 899.98px) {
     .how-line {
       display: none;
     }
-    .how-step {
-      border-top: 1px solid var(--color-line);
-    }
+  }
+  .how-num {
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-laterite);
+    color: var(--color-paper);
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+  }
+  .how-step h3 {
+    margin-top: 1.25rem;
+    font-size: var(--text-display-sm);
+  }
+  .how-step p {
+    margin-top: 0.6rem;
+    max-width: 22rem;
+    color: var(--color-ink-soft);
   }
   .how-tailor {
     display: grid;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: end;
-    padding: clamp(2rem, 5vw, 4rem);
-    background: var(--color-sky);
+    margin-top: clamp(3.5rem, 7vw, 5.5rem);
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) calc(var(--spacing-gutter) + 3.5rem);
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .how-tailor {
       grid-template-columns: 1fr auto;
     }
   }
+  .how-tailor .hand {
+    font-size: var(--text-hand-lg);
+  }
+  .how-tailor p.big {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--text-display-md);
+    line-height: var(--text-display-md--line-height);
+    text-transform: uppercase;
+  }
 
-  /* 12. Travel basics */
-  .basics-grid {
+  /* 12. Before you go: checklist */
+  .basics {
+    padding-block: var(--spacing-section);
+  }
+  .basics h2 {
+    padding-left: 3rem;
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
+  .checklist {
     display: grid;
-    gap: 1px;
-    background: var(--color-line);
-    border-block: 1px solid var(--color-line);
+    gap: 2.5rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-left: 3rem;
   }
-  @media (min-width: 768px) {
-    .basics-grid {
+  @media (min-width: 900px) {
+    .checklist {
       grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
     }
   }
-  .basics-card {
-    background: var(--color-white);
-    padding: 2rem 0;
+  .check {
+    position: relative;
   }
-  @media (min-width: 768px) {
-    .basics-card {
-      padding: 2.5rem 2rem 2.5rem 0;
-    }
-    .basics-card + .basics-card {
-      padding-left: 2rem;
-    }
+  .check-box {
+    position: absolute;
+    left: -2.6rem;
+    top: 0.1rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 2px solid var(--color-ink);
+  }
+  .check-box svg {
+    position: absolute;
+    left: -0.2rem;
+    top: -0.7rem;
+    width: 2.2rem;
+    overflow: visible;
+  }
+  .check-box path {
+    fill: none;
+    stroke: var(--color-ballpoint);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .check h3 {
+    font-size: var(--text-display-sm);
+  }
+  .check p {
+    margin-top: 0.6rem;
   }
 
   /* 13. FAQ */
+  .faq {
+    padding-block: var(--spacing-section);
+    border-top: 1px solid var(--color-line);
+  }
   .faq-grid {
     display: grid;
     gap: 3rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .faq-grid {
       grid-template-columns: 5fr 7fr;
       gap: clamp(3rem, 6vw, 6rem);
@@ -1286,8 +1539,12 @@ html.lenis body {
       top: calc(var(--spacing-header) + 2rem);
     }
   }
+  .faq h2 {
+    font-size: var(--text-display-lg);
+    line-height: var(--text-display-lg--line-height);
+  }
   .faq-list {
-    border-top: 1px solid var(--color-line);
+    border-top: 2px solid var(--color-ink);
   }
   .faq-item {
     border-bottom: 1px solid var(--color-line);
@@ -1297,9 +1554,14 @@ html.lenis body {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding-block: 1.5rem;
+    padding-block: 1.35rem;
     cursor: pointer;
     list-style: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--text-display-sm);
+    line-height: 1;
+    text-transform: uppercase;
   }
   .faq-item summary::-webkit-details-marker {
     display: none;
@@ -1317,7 +1579,7 @@ html.lenis body {
     left: 0;
     right: 0;
     top: 50%;
-    height: 1px;
+    height: 2px;
     background: currentColor;
     transition: rotate var(--duration-base) var(--ease-out-expo);
   }
@@ -1329,10 +1591,9 @@ html.lenis body {
   }
   .faq-answer {
     max-width: 40rem;
-    padding-bottom: 1.75rem;
-    color: var(--color-ink-muted);
+    padding-bottom: 1.6rem;
+    color: var(--color-ink-soft);
   }
-  /* Smooth open/close where the browser supports animating details content. */
   @supports (interpolate-size: allow-keywords) {
     .faq-item {
       interpolate-size: allow-keywords;
@@ -1350,20 +1611,558 @@ html.lenis body {
   }
 
   /* 14. Footer */
+  .site-footer {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
   .site-footer a {
     text-decoration: none;
   }
   .footer-number {
     display: block;
-    margin-top: 1rem;
-    padding-bottom: 0.15em;
+    margin-top: 0.75rem;
+    padding-bottom: 0.1em;
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 10.5vw, 11rem);
-    line-height: 1;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 11vw, 10.5rem);
+    line-height: 0.9;
     white-space: nowrap;
-    transition: font-style var(--duration-fast);
+    transition: color var(--duration-fast);
   }
   .footer-number:hover {
-    font-style: italic;
+    color: var(--color-ticket-yellow);
+  }
+  .footer-soft {
+    color: rgb(255 255 255 / 0.78);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Route: interactive stops + detail card (R2) ---------- */
+@layer components {
+  .stop-inner {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.35rem 0.5rem;
+    margin: -0.35rem -0.5rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    transition:
+      transform var(--duration-base) var(--ease-out-expo),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+  .stop-inner:hover,
+  .stop-inner:focus-visible,
+  .stop.is-active .stop-inner {
+    transform: translateY(-3px);
+    background: var(--color-ticket-yellow);
+  }
+  .stop.is-active .stop-name {
+    color: var(--color-laterite-deep);
+  }
+  .stop-peek {
+    display: none;
+  }
+  .map-svg .dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: r var(--duration-fast) var(--ease-out);
+  }
+  .map-svg .dot.is-hot {
+    r: 13;
+  }
+
+  .stop-card {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 45;
+    max-height: 78svh;
+    overflow-y: auto;
+    padding: 1.5rem var(--spacing-gutter) 2rem;
+    background: var(--color-paper);
+    box-shadow: 0 -20px 40px -20px rgb(0 0 0 / 0.4);
+    transform: translateY(102%);
+    transition: transform var(--duration-base) var(--ease-out-expo);
+  }
+  .stop-card.is-open {
+    transform: none;
+  }
+  .stop-card-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background: transparent;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-ink);
+  }
+  .stop-card-photo {
+    width: min(100%, 22rem);
+  }
+  .stop-card-kicker {
+    margin-top: 1.25rem;
+    color: var(--color-ink-soft);
+  }
+  .stop-card-title {
+    font-size: var(--text-display-md);
+    line-height: var(--text-display-md--line-height);
+  }
+  .stop-card-note {
+    font-size: var(--text-hand-lg);
+    margin-top: 0.25rem;
+  }
+  .stop-card-fact {
+    margin-top: 0.75rem;
+    color: var(--color-ink-soft);
+  }
+  .stop-card-cta {
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 900px) {
+    .book {
+      padding-block: clamp(3rem, 6vw, 5rem);
+    }
+    .book-stage {
+      display: grid;
+      align-content: center;
+      min-height: 100svh;
+      padding-top: calc(var(--spacing-header) + 1rem);
+    }
+    .map {
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+      max-height: calc(100svh - 14rem);
+      aspect-ratio: 1200 / 560;
+      margin-inline: auto;
+      width: min(100%, calc((100svh - 14rem) * 1200 / 560));
+    }
+    .stop-peek {
+      display: block;
+      position: absolute;
+      left: calc(100% + 0.5rem);
+      top: -0.5rem;
+      width: 8.5rem;
+      padding: 0.35rem 0.35rem 0.35rem;
+      background: var(--color-paper);
+      box-shadow: 0 14px 26px -14px rgb(0 0 0 / 0.5);
+      opacity: 0;
+      scale: 0.85;
+      rotate: 4deg;
+      pointer-events: none;
+      transition:
+        opacity var(--duration-fast) var(--ease-out),
+        scale var(--duration-base) var(--ease-out-expo),
+        rotate var(--duration-base) var(--ease-out-expo);
+    }
+    .stop.is-last .stop-peek,
+    .stop:nth-last-child(2) .stop-peek {
+      left: auto;
+      right: calc(100% + 0.5rem);
+      rotate: -4deg;
+    }
+    .stop-peek img {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      object-fit: cover;
+    }
+    .stop:hover .stop-peek,
+    .stop:focus-within .stop-peek {
+      opacity: 1;
+      scale: 1;
+      rotate: 0deg;
+    }
+    .stop.is-active .stop-peek {
+      opacity: 0;
+    }
+    .stop-card {
+      position: absolute;
+      inset: 50% auto auto auto;
+      right: 0;
+      width: min(23rem, 38%);
+      max-height: none;
+      overflow: visible;
+      padding: 1.25rem 1.25rem 1.5rem;
+      rotate: 1deg;
+      box-shadow: 0 24px 40px -22px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(0 0 0 / 0.05);
+      opacity: 0;
+      transform: translate(30px, -50%);
+      transition:
+        opacity var(--duration-base) var(--ease-out),
+        transform var(--duration-base) var(--ease-out-expo);
+    }
+    .stop-card[data-side='left'] {
+      right: auto;
+      left: 0;
+      rotate: -1deg;
+      transform: translate(-30px, -50%);
+    }
+    .stop-card.is-open {
+      opacity: 1;
+      transform: translate(0, -50%);
+    }
+    .stop-card-title {
+      font-size: var(--text-display-sm);
+    }
+    .stop-card-photo {
+      width: 100%;
+    }
+  }
+}
+
+/* ---------- Udawalawe: binocular reveal + spotting lens ---------- */
+@layer components {
+  .stops {
+    pointer-events: none;
+  }
+  .stop {
+    pointer-events: auto;
+  }
+  @media (max-width: 899.98px) {
+    .stops {
+      pointer-events: auto;
+    }
+  }
+
+}
+
+/* The card sits inside .map, so undo the old absolute map-print rule for its photo. */
+.map .stop-card .print {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* ---------- Route scrapbook: photos pasted into the curves ---------- */
+@layer components {
+  .arch-print,
+  .stop-thumb {
+    display: none;
+  }
+  @media (max-width: 899.98px) {
+    .stop {
+      display: grid;
+      grid-template-columns: 1fr 7.5rem;
+      gap: 1rem;
+      align-items: center;
+    }
+    .stop-thumb {
+      display: block;
+      width: 7.5rem;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      padding: 0.3rem;
+      background: var(--color-paper);
+      box-shadow: 0 10px 20px -10px rgb(0 0 0 / 0.45);
+      rotate: 2deg;
+    }
+    .stop:nth-child(even) .stop-thumb {
+      rotate: -2deg;
+    }
+  }
+  @media (min-width: 900px) {
+    .arch-print {
+      display: block;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 1;
+      width: clamp(7.5rem, 11vw, 11rem);
+      padding: 0.4rem 0.4rem 1.65rem;
+      background: var(--color-paper);
+      translate: -50% -50%;
+      rotate: var(--r, 0deg);
+      box-shadow: 0 14px 26px -14px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(0 0 0 / 0.05);
+      cursor: pointer;
+      transition:
+        scale var(--duration-base) var(--ease-out-expo),
+        rotate var(--duration-base) var(--ease-out-expo),
+        box-shadow var(--duration-base) var(--ease-out-expo);
+    }
+    /* A strip of tape holding the photo to the page */
+    .arch-print::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -0.6rem;
+      width: 3.6rem;
+      height: 1.15rem;
+      background: rgb(246 231 166 / 0.85);
+      translate: -50% 0;
+      rotate: calc(var(--r, 0deg) * -1.5);
+      box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+    }
+    .arch-print img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .arch-print figcaption {
+      position: absolute;
+      left: 0.55rem;
+      right: 0.55rem;
+      bottom: 0.25rem;
+      font-family: var(--font-hand);
+      font-size: 0.95rem;
+      color: var(--color-ballpoint);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .arch-print:hover,
+    .arch-print.is-hot {
+      z-index: 6;
+      scale: 1.55;
+      rotate: 0deg;
+      box-shadow: 0 30px 50px -20px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(0 0 0 / 0.05);
+    }
+    .stop {
+      z-index: 2;
+    }
+  }
+}
+
+/* ---------- Udawalawe: follow the tracks ---------- */
+@layer components {
+  .herd {
+    background: var(--color-laterite);
+    color: var(--color-paper);
+    overflow: hidden;
+  }
+  .herd-prints use {
+    fill: var(--color-laterite-deep);
+    opacity: 0.75;
+  }
+  .herd-head .hand {
+    font-size: var(--text-hand-lg);
+    color: var(--color-ticket-yellow);
+  }
+  .herd-head h2 {
+    font-size: clamp(3.25rem, 9vw, 8.5rem);
+    line-height: 0.85;
+  }
+  .herd-lede {
+    max-width: 24rem;
+    margin-top: 1rem;
+    font-size: var(--text-body-lg);
+  }
+  .herd-photo {
+    position: relative;
+  }
+  .herd-card {
+    position: relative;
+    padding: 0.55rem 0.55rem 2.4rem;
+    background: var(--color-paper);
+    rotate: var(--r, 0deg);
+    box-shadow: 0 24px 40px -20px rgb(0 0 0 / 0.55);
+  }
+  .is-trail .herd-card {
+    rotate: none;
+  }
+  .herd-photo-inner {
+    overflow: hidden;
+  }
+  .herd-photo img {
+    width: 100%;
+    aspect-ratio: var(--ratio, 3 / 2);
+    object-fit: cover;
+  }
+  .herd-photo figcaption {
+    position: absolute;
+    left: 0.8rem;
+    right: 0.8rem;
+    bottom: 0.45rem;
+    font-size: var(--text-hand);
+    color: var(--color-ballpoint);
+  }
+  .herd-end {
+    max-width: 22rem;
+  }
+  .herd-end .hand {
+    font-size: var(--text-hand-lg);
+    color: var(--color-ticket-yellow);
+  }
+  .herd-end-title {
+    margin-block: 0.5rem 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--text-display-md);
+    line-height: var(--text-display-md--line-height);
+    text-transform: uppercase;
+  }
+
+  /* Phones and reduced motion: a vertical trail; photos stacked with footprints between them. */
+  .herd-stage {
+    padding-block: var(--spacing-section);
+  }
+  .herd-track {
+    display: grid;
+    gap: 3.5rem;
+    padding-inline: var(--spacing-gutter);
+  }
+  .herd-prints {
+    display: none;
+  }
+  .herd-photo:nth-of-type(even) {
+    margin-left: 12%;
+  }
+  .herd-photo:nth-of-type(odd) {
+    margin-right: 12%;
+  }
+
+  /* Desktop with motion: herd.js adds .is-trail — one wide track that slides sideways. */
+  .herd-stage.is-trail {
+    height: 100svh;
+    padding: 0;
+  }
+  .is-trail .herd-track {
+    position: relative;
+    display: block;
+    width: 300vw;
+    height: 100%;
+    padding: 0;
+  }
+  .is-trail .herd-prints {
+    display: block;
+    position: absolute;
+    inset: 12% 0 6% 0;
+    width: 100%;
+    height: 82%;
+  }
+  .is-trail .herd-head {
+    position: absolute;
+    left: 4vw;
+    top: calc(var(--spacing-header) + 3rem);
+    width: 26vw;
+  }
+  .is-trail .herd-photo {
+    position: absolute;
+    left: var(--hx);
+    top: var(--hy);
+    width: var(--w);
+    margin: 0;
+    translate: -50% -50%;
+  }
+  .is-trail .herd-end {
+    position: absolute;
+    left: 92%;
+    top: 50%;
+    translate: -50% -50%;
+  }
+}
+
+/* Captions on white prints stay ballpoint blue, even inside dark sections. */
+.on-dark .herd-card .hand,
+.on-dark .print figcaption {
+  color: var(--color-ballpoint);
+}
+
+/* ---------- Route, wide layout (desktop): the road scrolls sideways while pinned ---------- */
+@layer components {
+  @media (min-width: 900px) {
+    .map {
+      aspect-ratio: auto;
+      max-height: none;
+      width: 100%;
+    }
+    .map-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3000 / 560;
+    }
+    .arch-print {
+      width: clamp(13rem, 17vw, 19rem);
+      padding: 0.5rem 0.5rem 2rem;
+    }
+    .arch-print figcaption {
+      font-size: 1.15rem;
+      bottom: 0.35rem;
+    }
+    .arch-print:hover,
+    .arch-print.is-hot {
+      scale: 1.2;
+    }
+    .stop-name {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+    }
+    .stop .hand {
+      font-size: 1.15rem;
+    }
+    .stop-card {
+      position: absolute;
+      inset: auto;
+      top: 50%;
+      right: var(--spacing-gutter);
+      z-index: 8;
+    }
+    .stop-card[data-side='left'] {
+      right: auto;
+      left: var(--spacing-gutter);
+    }
+
+    .book-stage.is-trail {
+      position: relative;
+      display: block;
+      align-content: start;
+      max-width: none;
+      height: 100svh;
+      min-height: 0;
+      padding-top: calc(var(--spacing-header) + 2.25rem);
+      overflow: hidden;
+    }
+    .is-trail .book-head {
+      position: relative;
+      z-index: 3;
+      gap: 0.25rem;
+      padding-left: 3rem;
+    }
+    .is-trail .book-head h2 {
+      font-size: var(--text-display-md);
+      line-height: var(--text-display-md--line-height);
+    }
+    .is-trail .book-head .hand {
+      font-size: var(--text-hand);
+    }
+    .is-trail .map {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2svh;
+      height: calc(100svh - var(--spacing-header) - 12rem);
+      margin: 0;
+    }
+    .is-trail .map-inner {
+      width: auto;
+      height: 100%;
+      margin-left: var(--spacing-gutter);
+      will-change: transform;
+    }
   }
 }

@@ -1,36 +1,24 @@
-<!-- 5. Tours: list on the left, sticky photo panel on the right that follows the active tour -->
-<section id="tours" class="tours py-section" data-section="tours" aria-labelledby="tours-title">
+<!-- 5. Tours: railway tickets on the left, a sticky photo print on the right -->
+<section id="tours" class="tours on-dark" data-section="tours" aria-labelledby="tours-title">
   <div class="wrap">
-    <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-      <div>
-        <p class="label text-ink-muted">Tour packages</p>
-        <h2 id="tours-title" class="mt-5 text-display-lg">Sri Lanka<br />tour packages</h2>
-      </div>
-      <p class="max-w-[26rem] text-body text-ink-muted">
-        Prices are per person and cover your private vehicle and driver-guide. Hotels and meals are
-        booked separately.
-      </p>
+    <div class="tours-head">
+      <h2 id="tours-title">Sri Lanka<br />tour packages</h2>
+      <p class="hand">Five routes. Fares are per person for the car and your driver-guide; hotels are separate.</p>
     </div>
 
-    <div class="tours-grid mt-12 md:mt-20">
+    <div class="tours-grid">
       <ol class="tours-list" data-tours-list>
         {{#each tours}}
         <li class="tour-item{{#if @first}} is-active{{/if}}" data-tour-item>
-          <a class="tour-link" href="{{quoteUrl}}">
-            <span class="label tour-index">{{index}}</span>
-            <div class="tour-body">
-              <h3 class="tour-title">{{title}}</h3>
-              <span class="tour-facts label">
-                <span>{{durationDays}} days · {{nights}} nights</span>
-                <span>Best {{bestMonths}}</span>
-                <span>From {{money pricing.from pricing.currency}} pp</span>
-              </span>
-            </div>
-            <span class="tour-arrow" aria-hidden="true">→</span>
+          <a class="ticket" href="{{quoteUrl}}">
+            <span class="t-top"><span>{{@root.business.name}}</span><span>No. 00{{index}}</span></span>
+            <span class="t-route"><small>Colombo airport to</small><h3>{{title}}</h3></span>
+            <span class="t-foot"><span>{{durationDays}} days · {{nights}} nights<br />Best {{bestMonths}}</span><span class="t-fare">Fare from<b>{{money pricing.from pricing.currency}}</b></span></span>
           </a>
-          <div class="ph tour-photo-inline{{#if (odd @index)}} is-hills{{/if}}" role="img" aria-label="{{photo.alt}}">
-            <span class="label opacity-80">Photo to come · {{photo.placeholder}}</span>
-          </div>
+          <figure class="print tour-photo-inline" style="--ratio: 4 / 3; --r: 1deg">
+            {{#with (photo @root.photos photo.key)}}<img src="{{src}}" alt="{{alt}}" loading="lazy" width="1600" height="1200" />{{else}}<div class="ph" role="img" aria-label="{{photo.alt}}"><span class="label">Photo to come</span></div>{{/with}}
+            <figcaption>{{photo.placeholder}}</figcaption>
+          </figure>
         </li>
         {{/each}}
       </ol>
@@ -38,22 +26,19 @@
       <div class="tours-panel" aria-hidden="true">
         <div class="tours-frame">
           {{#each tours}}
-          <div class="ph tours-photo{{#if (odd @index)}} is-hills{{/if}}{{#if @first}} is-active{{/if}}" data-tour-photo>
-            <span class="label opacity-80">Photo to come · {{photo.placeholder}}</span>
-            <span class="tours-price">
-              <span class="label block">From</span>
-              <span class="font-display text-display-md">{{money pricing.from pricing.currency}}</span>
-              <span class="label block">per person · {{durationDays}} days</span>
-            </span>
-          </div>
+          <figure class="print tours-photo{{#if @first}} is-active{{/if}}" style="--r: {{#if (odd @index)}}2deg{{else}}-2deg{{/if}}" data-tour-photo>
+            {{#with (photo @root.photos photo.key)}}<img src="{{src}}" alt="" loading="lazy" width="1600" height="2000" />{{else}}<div class="ph"><span class="label">Photo to come · {{../photo.placeholder}}</span></div>{{/with}}
+            <figcaption>{{photo.placeholder}}</figcaption>
+            <span class="stamp">From {{money pricing.from pricing.currency}} · {{durationDays}} days</span>
+          </figure>
           {{/each}}
         </div>
       </div>
     </div>
 
-    <div class="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 md:mt-16">
-      {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-link">Ask for a tailor-made route <span class="arrow" aria-hidden="true">→</span></a>{{/if}}
-      <p class="label text-ink-muted">Transfers from {{money business.transfersFrom business.currency}} · day trips from {{money business.dayTripsFromPerDay business.currency}} a day</p>
+    <div class="tours-foot">
+      {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-ticket">Ask for a tailor-made route →</a>{{/if}}
+      <p class="hand">Transfers from {{money business.transfersFrom business.currency}} · day trips from {{money business.dayTripsFromPerDay business.currency}} a day</p>
     </div>
   </div>
 </section>

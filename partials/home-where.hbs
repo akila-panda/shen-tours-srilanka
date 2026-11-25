@@ -1,42 +1,13 @@
-<!-- 6. Where to go: stair-stepped heading with a cut-out flower, then a strip of destinations -->
+<!-- 6. Where to go: stair-stepped heading, a frangipani print, then prints of the destinations -->
 <section id="where" class="where" data-section="where" aria-labelledby="where-title">
-  <div class="wrap relative pt-section">
+  <div class="wrap where-head">
     <h2 id="where-title" class="where-title">
       <span class="where-line" data-where-line="0">Where</span>
-      <span class="where-line" data-where-line="1"><span class="script text-script-lg normal-case">to go</span> in</span>
+      <span class="where-line" data-where-line="1"><span class="hand">to go</span> in</span>
       <span class="where-line" data-where-line="2">Sri Lanka</span>
     </h2>
-
-    <!-- Stand-in for the cut-out frangipani photo (Phase 6 swaps in the real cut-out). -->
-    <svg class="where-flower" viewBox="0 0 240 240" aria-hidden="true" data-where-flower>
-      <g transform="translate(120 120)">
-        <g class="petals">
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(0)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(72)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(144)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(216)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(288)" />
-        </g>
-        <circle r="14" class="heart" />
-      </g>
-    </svg>
-    <svg class="where-flower is-small" viewBox="0 0 240 240" aria-hidden="true" data-where-flower-small>
-      <g transform="translate(120 120) rotate(30)">
-        <g class="petals">
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(72)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(144)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(216)" />
-          <path d="M0,0 C-26,-40 -18,-98 14,-104 C44,-96 34,-44 0,0Z" transform="rotate(288)" />
-        </g>
-        <circle r="14" class="heart" />
-      </g>
-    </svg>
-
-    <p class="where-intro text-body-lg">
-      From the fort walls at Galle to the surf at Arugam Bay, your driver-guide plans the route
-      around the places you want to see.
-    </p>
+    <figure class="print where-flower" data-where-flower><img src="{{photos.plumeria.src}}" alt="{{photos.plumeria.alt}}" loading="lazy" width="900" height="1125" /><figcaption>frangipani</figcaption></figure>
+    <p class="where-intro">From the rock fortress at Sigiriya to the elephants of Minneriya and Udawalawe, the leopards of Yala and the fort walls of Galle, your driver-guide plans the route around the places you want to see.</p>
   </div>
 
   <div class="where-strip" data-where-strip>
@@ -44,14 +15,11 @@
       <ol class="where-track" data-where-track>
         {{#each destinations}}
         <li class="dest-card">
-          <div class="ph dest-photo{{#if (odd @index)}} is-hills{{/if}}" role="img" aria-label="{{photo.alt}}">
-            <span class="label opacity-80">Photo to come</span>
-          </div>
-          <p class="mt-4 flex items-baseline gap-3">
-            <span class="label text-ink-muted">{{index}}</span>
-            <span class="font-display text-display-sm uppercase">{{name}}</span>
-          </p>
-          <p class="label mt-2 text-ink-muted">{{region}}</p>
+          <figure class="print">
+            {{#with (photo @root.photos photo.key)}}<img src="{{src}}" alt="{{alt}}" loading="lazy" width="900" height="1125" />{{else}}<div class="ph" role="img" aria-label="{{photo.alt}}"><span class="label">Photo to come</span></div>{{/with}}
+            <figcaption>{{region}}</figcaption>
+          </figure>
+          <p class="meta"><b>{{name}}</b><span class="label text-ink-soft">{{index}}</span></p>
         </li>
         {{/each}}
       </ol>

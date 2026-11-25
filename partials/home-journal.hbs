@@ -1,42 +1,24 @@
-<!-- 10. Guest journal (Hedwig-style scattered cards). Only real, named reviews and the guests' own videos. -->
-<section id="journal" class="journal py-section" data-section="journal" aria-labelledby="journal-title">
+<!-- 10. Guest journal: prints on laterite. Only real, named reviews and the guests' own videos. -->
+<section id="journal" class="journal on-dark" data-section="journal" aria-labelledby="journal-title">
   <div class="wrap">
-    <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-      <h2 id="journal-title" class="text-display-lg">
-        Guest journal
-        <span class="script block text-script-md normal-case">from the road</span>
-      </h2>
-      {{#if business.socials.tripadvisor}}
-      <a href="{{business.socials.tripadvisor}}" class="btn-link" rel="noopener">Read our reviews on Tripadvisor <span class="arrow" aria-hidden="true">→</span></a>
-      {{/if}}
+    <div class="journal-head flex flex-wrap items-end justify-between gap-6">
+      <h2 id="journal-title">Guest journal<span class="hand">from the road</span></h2>
+      {{#if business.socials.tripadvisor}}<a href="{{business.socials.tripadvisor}}" class="link-hand" rel="noopener">read our reviews on Tripadvisor →</a>{{/if}}
     </div>
-
-    <ol class="journal-board mt-12 md:mt-16">
+    <ol class="journal-board">
       {{#each videos}}
       <li class="journal-card" data-journal-card>
-        <figure>
-          <div class="ph journal-media{{#if (odd @index)}} is-hills{{/if}}" {{#unless src}}role="img" aria-label="Guest video {{numeral}}, to be added"{{/unless}}>
-            <span class="journal-play" aria-hidden="true">▶</span>
-            <span class="label opacity-80">Video to come</span>
-          </div>
-          <figcaption class="mt-3 flex items-baseline gap-3">
-            <span class="font-display text-display-sm">{{numeral}}.</span>
-            <span class="label text-ink-muted">{{#if guest}}{{guest}}{{else}}Guest story{{/if}}</span>
-          </figcaption>
+        <figure class="print">
+          <div class="ph" {{#unless src}}role="img" aria-label="Guest video {{numeral}}, to be added"{{/unless}}><span class="journal-play" aria-hidden="true">▶</span></div>
+          <figcaption>{{numeral}}. {{#if guest}}{{guest}}{{else}}guest story{{/if}}</figcaption>
         </figure>
       </li>
       {{/each}}
     </ol>
-
     {{#if reviews.length}}
     <ul class="mt-16 grid gap-10 md:grid-cols-2">
       {{#each reviews}}
-      <li>
-        <blockquote>
-          <p class="text-body-lg">“{{text}}”</p>
-          <footer class="label mt-4 text-ink-muted">{{author}}{{#if country}}, {{country}}{{/if}} · <a href="{{sourceUrl}}" class="underline" rel="noopener">{{source}}</a></footer>
-        </blockquote>
-      </li>
+      <li><blockquote><p class="text-body-lg">“{{text}}”</p><footer class="label mt-4">{{author}}{{#if country}}, {{country}}{{/if}} · <a href="{{sourceUrl}}" class="underline" rel="noopener">{{source}}</a></footer></blockquote></li>
       {{/each}}
     </ul>
     {{/if}}

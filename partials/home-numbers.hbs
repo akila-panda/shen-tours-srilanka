@@ -1,11 +1,17 @@
-<!-- 8. Numbers -->
-<section class="numbers border-y border-line" data-section="numbers" aria-label="Shen Tours in numbers">
-  <dl class="wrap numbers-grid">
-    {{#each stats}}
-    <div class="numbers-tile">
-      <dt class="label text-ink-muted">{{label}}</dt>
-      <dd class="numbers-value"><span {{#unless noCount}}data-count="{{value}}"{{/unless}}>{{value}}</span>{{suffix}}</dd>
+<!-- 8. The logbook (facts from business.json) -->
+<section class="logbook" data-section="numbers" aria-labelledby="logbook-title">
+  <div class="wrap">
+    <div class="logbook-page ruled">
+      <h2 id="logbook-title">The logbook so far</h2>
+      <dl class="logbook-rows">
+        {{#each stats}}
+        <div class="logbook-row">
+          <dt>{{label}}</dt>
+          <span class="leader" aria-hidden="true"></span>
+          <dd><span {{#unless noCount}}data-count="{{value}}"{{/unless}}>{{value}}</span>{{suffix}}</dd>
+        </div>
+        {{/each}}
+      </dl>
     </div>
-    {{/each}}
-  </dl>
+  </div>
 </section>

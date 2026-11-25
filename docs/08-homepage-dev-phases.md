@@ -18,7 +18,7 @@ motion can be reviewed without them.
 | 3 | Tours and where to go | 5, 6 | Approved | 2026-11-24 |
 | 4 | Guide, numbers, offers, guest journal | 7, 8, 9, 10 | Approved | 2026-11-24 |
 | 5 | How it works, travel basics, FAQ, footer | 11, 12, 13, 14 | Approved | 2026-11-24 |
-| 6 | Real images, polish, performance and launch checks | all | Not started | — |
+| 6 | Replaced by the Road Book redesign, phases R1–R6 in [doc 09](09-road-book-immersive-plan.md) | all | Superseded | — |
 
 Status values: Not started · In progress · Ready for review · Changes requested · Approved.
 

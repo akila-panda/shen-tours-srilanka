@@ -1,20 +1,17 @@
 {{#if offers.length}}
-<!-- 9. Seasonal offers: only offers still valid at build time render; offers.js re-checks the date -->
-<section id="offers" class="offers bg-ink py-section text-paper" data-section="offers" aria-labelledby="offers-title">
+<!-- 9. Seasonal offers as ticket stubs; offers.js re-checks validTo in the browser -->
+<section id="offers" class="offers" data-section="offers" aria-labelledby="offers-title">
   <div class="wrap">
-    <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-      <div>
-        <p class="label opacity-80">Offers</p>
-        <h2 id="offers-title" class="mt-5 text-display-lg">Seasonal offers</h2>
-      </div>
-      {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-link">Ask about an offer <span class="arrow" aria-hidden="true">→</span></a>{{/if}}
+    <div class="offers-head">
+      <h2 id="offers-title">Seasonal offers</h2>
+      {{#if quoteUrl}}<a href="{{quoteUrl}}" class="link-hand">ask about an offer →</a>{{/if}}
     </div>
-    <ul class="offers-grid mt-12 md:mt-16">
+    <ul class="offers-grid">
       {{#each offers}}
-      <li class="offer-card" data-offer {{#if validTo}}data-valid-to="{{validTo}}"{{/if}}>
-        <p class="offer-value"><span class="font-display">{{discountPercent}}%</span> <span class="script">off</span></p>
-        <h3 class="mt-6 text-display-sm">{{title}}</h3>
-        {{#if terms}}<p class="label mt-3 opacity-80">{{terms}}</p>{{/if}}
+      <li class="stub" data-offer {{#if validTo}}data-valid-to="{{validTo}}"{{/if}}>
+        <p class="stub-value">{{discountPercent}}% <span class="hand">off</span></p>
+        <h3>{{title}}</h3>
+        {{#if terms}}<span class="stamp">{{terms}}</span>{{/if}}
       </li>
       {{/each}}
     </ul>

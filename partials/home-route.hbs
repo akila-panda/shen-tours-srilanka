@@ -1,62 +1,86 @@
-<!-- 4. The route: from arrivals across the island, then clouds part onto the hills -->
-<section id="route" class="route bg-sky" data-section="route" aria-labelledby="route-title">
-  <div class="route-stage" data-route-stage>
-    <div class="wrap pt-16 md:pt-24">
-      <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-        <div>
-          <p class="label">The route</p>
-          <h2 id="route-title" class="mt-5 text-display-lg">From arrivals<br />to anywhere</h2>
-        </div>
-        <p class="max-w-[26rem] text-body">
-          Shen's base in {{business.address.locality}} is near Colombo airport, so your driver-guide
-          meets you at arrivals and the trip starts there.
-        </p>
-      </div>
+<!-- 4. The road book: Shen's route, inked stop by stop. Desktop pins until the whole route is drawn;
+     every stop is a button that opens a card. Then clouds part onto the hills. -->
+<section id="route" class="book ruled" data-section="route" aria-labelledby="route-title">
+  <div class="wrap book-stage" data-route-stage>
+    <div class="book-head">
+      <h2 id="route-title">The road book</h2>
+      <p class="hand">from arrivals to anywhere · hover or tap a stop to plan it in</p>
     </div>
 
-    <div class="wrap pt-12 pb-16 md:pt-16 md:pb-24">
-      <div class="route-map" data-route-map>
-        <svg class="route-svg" viewBox="0 0 1200 420" aria-hidden="true">
-          <path class="route-ghost" d="{{#each route}}{{#if leg}}{{leg}} {{/if}}{{/each}}" />
-          {{#each route}}{{#if leg}}<path class="route-leg" d="{{leg}}" data-route-leg />{{/if}}{{/each}}
-          {{#each route}}<circle class="route-dot" cx="{{x}}" cy="{{y}}" r="7" data-route-dot />{{/each}}
-        </svg>
-        <span class="route-rail" aria-hidden="true"><span class="route-rail-fill" data-route-rail></span></span>
-        <ol class="route-stops">
-          {{#each route}}
-          <li class="route-stop{{#if labelBelow}} is-below{{/if}}{{#if @first}} is-first{{/if}}{{#if @last}} is-last{{/if}}" style="--x: {{leftPct}}%; --y: {{topPct}}%">
-            <span class="route-stop-inner" data-route-stop>
-              <span class="label">{{index}}</span>
-              <span class="route-name">{{name}}</span>
-              <span class="label route-note">{{#if fromAirport}}{{fromAirport}}{{else}}{{note}}{{/if}}</span>
-            </span>
-          </li>
-          {{/each}}
-        </ol>
+    <div class="map" data-route-map>
+      <div class="map-inner" data-route-inner>
+      <svg class="map-svg" viewBox="0 0 3000 560" aria-hidden="true">
+        <defs>
+          <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" /><feDisplacementMap in="SourceGraphic" scale="4" /></filter>
+        </defs>
+        <g transform="translate(0 70)">
+          <path id="route-path" d="{{routeWidePath}}" fill="none" stroke="none" />
+          {{#each routeWide}}{{#if leg}}<path class="ink" d="{{leg}}" data-route-leg />{{/if}}{{/each}}
+          {{#each routeWide}}<circle class="dot" cx="{{x}}" cy="{{y}}" r="8" data-route-dot />{{/each}}
+          <g class="van" data-van>
+            <rect x="-17" y="-11" width="34" height="18" rx="4" fill="#16231b" />
+            <rect x="-13" y="-8" width="11" height="7" rx="1.5" fill="#d6e6f2" /><rect x="0" y="-8" width="11" height="7" rx="1.5" fill="#d6e6f2" />
+            <circle cx="-9" cy="8" r="4" fill="#b4532a" /><circle cx="9" cy="8" r="4" fill="#b4532a" />
+          </g>
+        </g>
+      </svg>
+
+      <ol class="stops">
+        {{#each routeWide}}
+        <li class="stop{{#if labelBelow}} is-below{{/if}}{{#if @first}} is-first{{/if}}{{#if @last}} is-last{{/if}}" style="--x: {{leftPct}}%; --y: calc(({{y}} + 70) / 560 * 100%)" data-stop-index="{{@index}}">
+          <button type="button" class="stop-inner" aria-controls="stop-card" data-route-stop>
+            <span class="stop-name">{{name}}</span>
+            <span class="hand">{{#if fromAirport}}{{fromAirport}}{{else}}{{note}}{{/if}}</span>
+          </button>
+          {{#with (photo @root.photos photoKey)}}
+          <img class="stop-thumb" src="{{src}}" alt="" loading="lazy" width="640" height="480" />
+          {{/with}}
+        </li>
+        {{/each}}
+      </ol>
+
+      <!-- Scrapbook: each stop's photo is pasted into the curve beside it as the pen arrives -->
+      {{#each routeWide}}{{#with (photo @root.photos photoKey)}}
+      <figure class="arch-print" style="--x: {{../leftPct}}%; --y: {{../printTopPct}}%; --r: {{../printRot}}deg" data-route-print data-for="{{../i}}">
+        <img src="{{src}}" alt="{{alt}}" loading="lazy" width="640" height="480" />
+        <figcaption>{{../name}}</figcaption>
+      </figure>
+      {{/with}}{{/each}}
+
+      {{#each routeWide}}
+      <template data-stop-template="{{@index}}">
+        <figure class="print stop-card-photo" style="--ratio: 4 / 3; --r: -2deg">
+          {{#with (photo @root.photos photoKey)}}<img src="{{src}}" alt="{{alt}}" width="1280" height="960" />{{else}}<div class="ph"><span class="label">Arrivals</span></div>{{/with}}
+          <figcaption>{{name}}</figcaption>
+        </figure>
+        <p class="label stop-card-kicker">Stop {{index}}</p>
+        <h3 class="stop-card-title">{{name}}</h3>
+        <p class="hand stop-card-note">{{note}}</p>
+        {{#if fromAirport}}<p class="stop-card-fact">{{fromAirport}}</p>{{/if}}
+        {{#if addUrl}}<a class="btn-ticket stop-card-cta" href="{{addUrl}}">Add {{name}} to my route →</a>{{else}}<p class="stop-card-fact">Shen's base in {{@root.business.address.locality}} is near the airport, so the trip starts at arrivals.</p>{{/if}}
+      </template>
+      {{/each}}
       </div>
     </div>
-  </div>
-
-  <!-- Clouds part onto the hill country -->
-  <div class="hills" data-hills>
-    <p class="hills-text" data-hills-text>
-      <span class="label block">Next stop</span>
-      <span class="mt-5 block font-display text-display-lg uppercase">Up into</span>
-      <span class="script block text-script-lg">the hill</span>
-      <span class="block font-display text-display-lg uppercase">country</span>
-    </p>
-    <svg class="hills-layer" data-hills-layer="far" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,330 C140,280 260,300 380,250 C500,200 610,260 720,230 C850,195 960,150 1080,190 C1200,230 1320,200 1440,170 L1440,600 L0,600 Z" /></svg>
-    <svg class="hills-layer" data-hills-layer="mid" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,400 C120,360 230,330 360,350 C490,370 590,300 720,310 C860,320 960,380 1100,340 C1230,305 1340,320 1440,300 L1440,600 L0,600 Z" /></svg>
-    <svg class="hills-layer" data-hills-layer="near" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,470 C160,430 280,450 420,420 C560,390 660,440 800,430 C950,420 1060,380 1200,400 C1320,418 1390,440 1440,430 L1440,600 L0,600 Z" /></svg>
-    <svg class="hills-layer" data-hills-layer="front" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,540 C200,510 360,530 540,515 C720,500 880,540 1060,525 C1240,510 1350,530 1440,520 L1440,600 L0,600 Z" /></svg>
-    <svg class="cloud is-left" data-cloud="left" viewBox="0 0 800 320" aria-hidden="true">
-      <ellipse cx="420" cy="190" rx="330" ry="95" /><ellipse cx="300" cy="140" rx="170" ry="110" /><ellipse cx="500" cy="120" rx="190" ry="105" /><ellipse cx="640" cy="200" rx="160" ry="80" class="is-soft" />
-    </svg>
-    <svg class="cloud is-right" data-cloud="right" viewBox="0 0 800 320" aria-hidden="true">
-      <ellipse cx="380" cy="180" rx="330" ry="95" /><ellipse cx="300" cy="120" rx="190" ry="105" /><ellipse cx="500" cy="140" rx="170" ry="110" /><ellipse cx="160" cy="200" rx="160" ry="80" class="is-soft" />
-    </svg>
-    <svg class="cloud is-low" data-cloud="low" viewBox="0 0 800 320" aria-hidden="true">
-      <ellipse cx="400" cy="200" rx="380" ry="80" class="is-soft" /><ellipse cx="300" cy="160" rx="200" ry="90" />
-    </svg>
+    <!-- Detail card: filled from the template for the chosen stop -->
+      <article id="stop-card" class="stop-card" role="region" aria-live="polite" aria-label="Stop details" data-stop-card hidden>
+        <button type="button" class="stop-card-close" aria-label="Close" data-stop-close>×</button>
+        <div data-stop-card-body></div>
+      </article>
   </div>
 </section>
+
+<div class="hills" data-hills aria-label="The hill country">
+  <p class="hills-text" data-hills-text>
+    <span class="hand block" style="font-size: var(--text-hand-lg)">next stop</span>
+    <span class="big">Up into the</span>
+    <span class="big">hill country</span>
+  </p>
+  <svg class="hills-layer" data-hills-layer="far" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,330 C140,280 260,300 380,250 C500,200 610,260 720,230 C850,195 960,150 1080,190 C1200,230 1320,200 1440,170 L1440,600 L0,600 Z" /></svg>
+  <svg class="hills-layer" data-hills-layer="mid" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,400 C120,360 230,330 360,350 C490,370 590,300 720,310 C860,320 960,380 1100,340 C1230,305 1340,320 1440,300 L1440,600 L0,600 Z" /></svg>
+  <svg class="hills-layer" data-hills-layer="near" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,470 C160,430 280,450 420,420 C560,390 660,440 800,430 C950,420 1060,380 1200,400 C1320,418 1390,440 1440,430 L1440,600 L0,600 Z" /></svg>
+  <svg class="hills-layer" data-hills-layer="front" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0,540 C200,510 360,530 540,515 C720,500 880,540 1060,525 C1240,510 1350,530 1440,520 L1440,600 L0,600 Z" /></svg>
+  <svg class="cloud is-left" data-cloud="left" viewBox="0 0 800 320" aria-hidden="true"><ellipse cx="420" cy="190" rx="330" ry="95" /><ellipse cx="300" cy="140" rx="170" ry="110" /><ellipse cx="500" cy="120" rx="190" ry="105" /><ellipse cx="640" cy="200" rx="160" ry="80" class="is-soft" /></svg>
+  <svg class="cloud is-right" data-cloud="right" viewBox="0 0 800 320" aria-hidden="true"><ellipse cx="380" cy="180" rx="330" ry="95" /><ellipse cx="300" cy="120" rx="190" ry="105" /><ellipse cx="500" cy="140" rx="170" ry="110" /><ellipse cx="160" cy="200" rx="160" ry="80" class="is-soft" /></svg>
+  <svg class="cloud is-low" data-cloud="low" viewBox="0 0 800 320" aria-hidden="true"><ellipse cx="400" cy="200" rx="380" ry="80" class="is-soft" /><ellipse cx="300" cy="160" rx="200" ry="90" /></svg>
+</div>

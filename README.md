@@ -21,5 +21,6 @@ Read these in order. Each one builds on the one before it.
 | 6 | [docs/06-roadmap.md](docs/06-roadmap.md) | Drafts 1–4, what ships in each, and what "done" means |
 | 7 | [docs/07-homepage-plan.md](docs/07-homepage-plan.md) | **Draft 1 homepage**: references, concept, section order, design system, SEO, open questions |
 | 8 | [docs/08-homepage-dev-phases.md](docs/08-homepage-dev-phases.md) | **Homepage build in 7 phases**, each ending in a design review; progress tracker |
+| 9 | [docs/09-road-book-immersive-plan.md](docs/09-road-book-immersive-plan.md) | **Road Book redesign + immersive scroll**: merge map, Poland market, clip choreography, phases R1–R6 |
 
 [CLAUDE.md](CLAUDE.md) holds the working rules for anyone (human or AI) writing code here.

@@ -1,8 +1,8 @@
-<!-- 14. Footer: giant WhatsApp number on plum (ERA) -->
-<footer id="contact" class="site-footer bg-plum text-paper" data-section="footer">
+<!-- 14. Footer: giant WhatsApp number on tea ink -->
+<footer id="contact" class="site-footer on-dark" data-section="footer">
   <div class="wrap pt-section">
     {{#if business.whatsapp}}
-    <p class="label text-plum-muted">Message us on WhatsApp</p>
+    <p class="hand is-light" style="font-size: var(--text-hand-lg)">24/7 support on the road. Message us on WhatsApp</p>
     <a href="https://wa.me/{{digits business.whatsapp}}" class="footer-number" data-footer-number>{{business.whatsapp}}</a>
     {{/if}}
   </div>
@@ -10,7 +10,7 @@
   <div class="wrap grid gap-10 border-t border-line-light py-14 sm:grid-cols-2 lg:grid-cols-4">
     <div>
       <p class="label">Visit</p>
-      <address class="mt-4 not-italic text-plum-muted">
+      <address class="mt-4 not-italic footer-soft">
         {{business.address.street}}<br />
         {{business.address.locality}} {{business.address.postalCode}}<br />
         {{business.address.countryName}}<br />
@@ -19,14 +19,14 @@
     </div>
     <div>
       <p class="label">Hours</p>
-      <ul class="mt-4 text-plum-muted">
+      <ul class="mt-4 footer-soft">
         {{#each business.hours}}<li>{{days}}: {{opens}}–{{closes}}</li>{{/each}}
         <li>{{business.closed}}: closed</li>
       </ul>
     </div>
     <div>
       <p class="label">Contact</p>
-      <ul class="mt-4 space-y-1 text-plum-muted">
+      <ul class="mt-4 space-y-1 footer-soft">
         {{#if business.whatsapp}}<li><a href="https://wa.me/{{digits business.whatsapp}}" class="underline-offset-4 hover:underline">WhatsApp {{business.whatsapp}}</a></li>{{/if}}
         {{#if business.phone}}<li><a href="tel:+{{digits business.phone}}" class="underline-offset-4 hover:underline">Phone {{business.phone}}</a></li>{{/if}}
         {{#if business.email}}<li><a href="mailto:{{business.email}}" class="underline-offset-4 hover:underline">{{business.email}}</a></li>{{/if}}
@@ -34,7 +34,7 @@
     </div>
     <div>
       <p class="label">Follow</p>
-      <ul class="mt-4 space-y-1 text-plum-muted">
+      <ul class="mt-4 space-y-1 footer-soft">
         {{#if business.socials.instagram}}<li><a href="{{business.socials.instagram}}" rel="noopener" class="underline-offset-4 hover:underline">Instagram</a></li>{{/if}}
         {{#if business.socials.tiktok}}<li><a href="{{business.socials.tiktok}}" rel="noopener" class="underline-offset-4 hover:underline">TikTok</a></li>{{/if}}
         {{#if business.socials.facebook}}<li><a href="{{business.socials.facebook}}" rel="noopener" class="underline-offset-4 hover:underline">Facebook</a></li>{{/if}}
@@ -44,7 +44,7 @@
   </div>
 
   <div class="wrap flex flex-col gap-3 border-t border-line-light py-6 sm:flex-row sm:justify-between">
-    <p class="label text-plum-muted">© {{year}} {{business.name}}{{#if business.alternateName}} · formerly {{business.alternateName}}{{/if}}</p>
-    {{#if business.sltdaNumber}}<p class="label text-plum-muted">SLTDA registration {{business.sltdaNumber}}</p>{{/if}}
+    <p class="label footer-soft">© {{year}} {{business.name}}{{#if business.alternateName}} · formerly {{business.alternateName}}{{/if}}</p>
+    {{#if business.sltdaNumber}}<p class="label footer-soft">SLTDA registration {{business.sltdaNumber}}</p>{{/if}}
   </div>
 </footer>

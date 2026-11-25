@@ -39,20 +39,24 @@ function initChromeState() {
   });
 }
 
-// Left-edge counter 00 → 100 tied to page progress.
+// Odometer on the left edge: three rolling digits, 000 → 100 with page progress.
 function initCounter() {
-  const num = document.querySelector('[data-counter]');
-  const fill = document.querySelector('[data-counter-fill]');
-  if (!num) return;
-  ScrollTrigger.create({
-    start: 0,
-    end: 'max',
-    onUpdate(self) {
-      const p = Math.round(self.progress * 100);
-      num.textContent = String(p).padStart(2, '0');
-      fill.style.scale = `1 ${self.progress}`;
-    },
+  const box = document.querySelector('[data-odometer]');
+  if (!box) return;
+  const digits = [...box.querySelectorAll('.odometer-digit')];
+  // Each digit becomes a column 0–9 that slides vertically.
+  digits.forEach((d) => {
+    d.innerHTML = `<span style="display:block;will-change:transform">${[...Array(10).keys()].map((n) => `<span>${n}</span>`).join('')}</span>`;
   });
+  const cols = digits.map((d) => d.firstElementChild);
+  const set = (value) => {
+    const str = String(Math.round(value)).padStart(3, '0');
+    cols.forEach((col, i) => {
+      col.style.transform = `translateY(${-Number(str[i]) * 1.6}rem)`;
+    });
+  };
+  set(0);
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => set(self.progress * 100) });
 }
 
 // Full-screen menu: opened with a class (no hash change), Esc closes, focus is kept inside and

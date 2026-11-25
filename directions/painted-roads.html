@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.title}}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bungee&family=Bungee+Shade&family=Noto+Sans+Sinhala:wght@700&family=Noto+Sans+Tamil:wght@700&display=swap" />
+    <style>
+      /* Direction C — Painted Roads. Sri Lankan lorry and bus art: a drenched marigold page,
+         sign-painter letters with drop shadows, floral corner pieces, trilingual destination boards. */
+      :root {
+        --marigold: #f2a900;
+        --maroon: #5a1220;
+        --green: #0e6b47;
+        --pink: #e5367d;
+        --cyan: #29a8d6;
+        --white: #ffffff;
+        --board: #10140f;
+        --sign: 'Bungee', Impact, sans-serif;
+        --shade: 'Bungee Shade', 'Bungee', sans-serif;
+        --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+        --gutter: clamp(1rem, 4vw, 3rem);
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      ol, ul { list-style: none; }
+      html { background: var(--marigold); color: var(--maroon); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+      .hero h1 .big { overflow-wrap: anywhere; }
+      body { font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; }
+      img { display: block; max-width: 100%; height: auto; }
+      a { color: inherit; }
+      :focus-visible { outline: 3px solid var(--maroon); outline-offset: 3px; }
+      .wrap { width: 100%; max-width: 88rem; margin-inline: auto; padding-inline: var(--gutter); }
+      .sign { font-family: var(--sign); font-weight: 400; text-transform: uppercase; line-height: 0.95; }
+      .tag { position: fixed; left: 1rem; bottom: 1rem; z-index: 60; padding: 0.5rem 0.85rem; background: var(--maroon); color: var(--white); font: 700 0.75rem/1 var(--body); text-decoration: none; }
+
+      .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 5rem; }
+      .mark { font-family: var(--sign); font-size: 1.4rem; text-decoration: none; text-shadow: 3px 3px 0 var(--white); }
+      .btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.3rem; background: var(--maroon); color: var(--marigold); font: 400 1rem/1 var(--sign); text-decoration: none; border-radius: 12px; box-shadow: 4px 4px 0 var(--green); transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+      .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--green); }
+
+      /* Hero: a painted tailgate panel with an oval scene in the middle */
+      .tailgate { position: relative; margin-block: 1rem clamp(3rem, 7vw, 6rem); padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 4rem); border: 6px solid var(--maroon); border-radius: 28px; outline: 3px solid var(--green); outline-offset: -16px; background: var(--white); text-align: center; overflow: hidden; }
+      .corner { position: absolute; width: clamp(5rem, 11vw, 9rem); height: auto; }
+      .corner.tl { left: 0.6rem; top: 0.6rem; }
+      .corner.tr { right: 0.6rem; top: 0.6rem; transform: scaleX(-1); }
+      .corner.bl { left: 0.6rem; bottom: 0.6rem; transform: scaleY(-1); }
+      .corner.br { right: 0.6rem; bottom: 0.6rem; transform: scale(-1, -1); }
+      .hero h1 { position: relative; z-index: 1; }
+      .hero h1 .big { display: block; font-family: var(--shade); font-size: clamp(2.4rem, 7.2vw, 6.5rem); line-height: 1; color: var(--maroon); }
+      .ribbon { display: inline-block; margin-top: 1rem; padding: 0.55rem 1.4rem; background: var(--green); color: var(--white); font: 400 clamp(1rem, 2.2vw, 1.6rem)/1.1 var(--sign); border-radius: 8px; transform: rotate(-1.5deg); }
+      .medallion { position: relative; z-index: 1; width: min(32rem, 82%); aspect-ratio: 1.45; margin: clamp(1.5rem, 3vw, 2.5rem) auto 0; border-radius: 50%; padding: 12px; background: radial-gradient(circle, var(--pink) 3px, transparent 3.5px) 0 0 / 18px 18px, var(--marigold); }
+      .medallion img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 5px solid var(--maroon); }
+      .hero-foot { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 2rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+      .hero-foot p { max-width: 30rem; font-size: 1.1rem; }
+
+      /* Destination boards: trilingual, like a bus front */
+      .boards { background: var(--board); color: var(--marigold); padding-block: 1.1rem; overflow: hidden; border-block: 6px solid var(--maroon); }
+      .boards-track { display: flex; gap: 3rem; width: max-content; animation: run 38s linear infinite; }
+      .board { display: flex; align-items: baseline; gap: 1rem; white-space: nowrap; }
+      .board b { font: 400 clamp(1.8rem, 3.6vw, 3rem)/1 var(--sign); }
+      .board .si { font: 700 clamp(1.3rem, 2.4vw, 2rem)/1 'Noto Sans Sinhala', sans-serif; }
+      .board .ta { font: 700 clamp(1rem, 1.8vw, 1.5rem)/1 'Noto Sans Tamil', sans-serif; color: var(--white); }
+      .board::after { content: '✿'; margin-left: 2rem; color: var(--pink); font-size: 1.6rem; }
+      @keyframes run { to { transform: translateX(-50%); } }
+
+      /* Tours as painted signboards */
+      .tours { padding-block: clamp(4rem, 9vw, 8rem); overflow-x: clip; padding-top: calc(clamp(4rem, 9vw, 8rem) + 1rem); }
+      .signs { padding: 1.2rem 1rem 0 0; }
+      .tours h2 { font-family: var(--shade); font-size: clamp(2.4rem, 6vw, 5.5rem); line-height: 1; }
+      .tours .sub { margin-top: 1rem; max-width: 34rem; font-size: 1.1rem; }
+      .signs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+      .plank { position: relative; display: block; padding: 1.75rem 1.5rem 1.5rem; border: 5px solid var(--maroon); border-radius: 18px; background: var(--bg); color: var(--fg); text-decoration: none; box-shadow: 7px 7px 0 var(--maroon); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+      .plank:hover, .plank:focus-visible { transform: translate(-3px, -3px) rotate(-0.6deg); box-shadow: 10px 10px 0 var(--maroon); }
+      .plank:nth-child(4n + 1) { --bg: var(--green); --fg: var(--white); }
+      .plank:nth-child(4n + 2) { --bg: var(--white); --fg: var(--maroon); }
+      .plank:nth-child(4n + 3) { --bg: var(--maroon); --fg: var(--white); }
+      .plank:nth-child(4n + 4) { --bg: var(--cyan); --fg: var(--maroon); }
+      .plank h3 { font: 400 clamp(1.6rem, 2.6vw, 2.2rem)/1 var(--sign); padding-right: 5.5rem; }
+      .plank p { margin-top: 0.9rem; }
+      .burst { position: absolute; right: -0.9rem; top: -1.1rem; display: grid; place-items: center; width: 6.2rem; aspect-ratio: 1; background: var(--pink); color: var(--white); font: 400 0.95rem/1 var(--sign); text-align: center; clip-path: polygon(50% 0, 61% 12%, 77% 6%, 80% 22%, 96% 25%, 90% 40%, 100% 52%, 88% 62%, 93% 78%, 77% 80%, 72% 96%, 58% 89%, 45% 100%, 36% 87%, 20% 93%, 18% 77%, 3% 72%, 11% 58%, 0 46%, 12% 36%, 7% 20%, 23% 18%, 28% 3%, 41% 11%); rotate: 10deg; }
+      .burst b { display: block; font-size: 1.35rem; }
+
+      .foot { background: var(--maroon); color: var(--white); padding-block: clamp(4rem, 9vw, 7rem) 3rem; }
+      .foot p { font-size: 1.1rem; }
+      .foot-number { display: block; margin-top: 0.75rem; font-family: var(--shade); font-size: clamp(2.2rem, 9vw, 8.5rem); line-height: 1; color: var(--marigold); text-decoration: none; white-space: nowrap; }
+
+      .spec { background: var(--white); color: var(--maroon); padding-block: 3rem 5rem; }
+      .spec-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+      .swatches { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .sw { width: 4.5rem; }
+      .sw i { display: block; height: 3.5rem; background: var(--s); border: 1px solid rgb(0 0 0 / 0.08); }
+      .sw span { display: block; margin-top: 0.3rem; font-size: 0.72rem; line-height: 1.3; }
+      .spec h3 { font: 700 0.85rem/1 var(--body); margin-bottom: 1rem; }
+
+      @media (prefers-reduced-motion: reduce) { .boards-track { animation: none; } * { transition: none !important; } }
+    </style>
+    <script type="module" src="/src/js/directions/painted-roads.js"></script>
+  </head>
+  <body>
+    <a class="tag" href="/directions/">Direction C · Painted Roads ← all directions</a>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="flourish" viewBox="0 0 140 140">
+          <path d="M8 132 C 8 70, 40 30, 120 10" fill="none" stroke="#0e6b47" stroke-width="5" stroke-linecap="round" />
+          <path d="M34 78 C 18 66, 18 50, 30 42 C 40 56, 42 68, 34 78Z" fill="#0e6b47" />
+          <path d="M66 42 C 60 24, 70 12, 84 10 C 86 26, 80 38, 66 42Z" fill="#0e6b47" />
+          <g transform="translate(26 112)"><circle r="9" cx="0" cy="-12" fill="#e5367d" /><circle r="9" cx="11" cy="-4" fill="#e5367d" /><circle r="9" cx="7" cy="10" fill="#e5367d" /><circle r="9" cx="-7" cy="10" fill="#e5367d" /><circle r="9" cx="-11" cy="-4" fill="#e5367d" /><circle r="6" fill="#f2a900" /></g>
+          <g transform="translate(96 22) scale(0.7)"><circle r="9" cx="0" cy="-12" fill="#29a8d6" /><circle r="9" cx="11" cy="-4" fill="#29a8d6" /><circle r="9" cx="7" cy="10" fill="#29a8d6" /><circle r="9" cx="-7" cy="10" fill="#29a8d6" /><circle r="9" cx="-11" cy="-4" fill="#29a8d6" /><circle r="6" fill="#ffffff" /></g>
+          <circle cx="58" cy="70" r="5" fill="#5a1220" /><circle cx="46" cy="96" r="4" fill="#5a1220" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="top">
+      <div class="wrap">
+        <a class="mark" href="/directions/painted-roads.html">Shen Tours</a>
+        <a class="btn" href="{{quoteUrl}}">Plan my tour →</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="wrap hero" aria-labelledby="c-h1">
+        <div class="tailgate" data-tailgate>
+          <svg class="corner tl" aria-hidden="true"><use href="#flourish" /></svg>
+          <svg class="corner tr" aria-hidden="true"><use href="#flourish" /></svg>
+          <svg class="corner bl" aria-hidden="true"><use href="#flourish" /></svg>
+          <svg class="corner br" aria-hidden="true"><use href="#flourish" /></svg>
+          <h1 id="c-h1"><span class="big">Private Sri Lanka tours</span><span class="ribbon">with a local driver-guide</span></h1>
+          <div class="medallion" data-medallion><img src="{{photos.sigiriya.src}}" alt="{{photos.sigiriya.alt}}" width="1600" height="1067" fetchpriority="high" /></div>
+          <div class="hero-foot">
+            <p>Your own car or van and an English-speaking driver-guide, from {{money business.fromPricePerPersonPerDay business.currency}} per person per day.</p>
+            <a class="btn" href="{{quoteUrl}}">Get a free quote →</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="boards" aria-label="Destinations">
+        <ul class="boards-track">
+          {{#each route}}<li class="board"><b>{{name}}</b><span class="si" lang="si">{{nameSi}}</span><span class="ta" lang="ta">{{nameTa}}</span></li>{{/each}}
+          {{#each route}}<li class="board" aria-hidden="true"><b>{{name}}</b><span class="si" lang="si">{{nameSi}}</span><span class="ta" lang="ta">{{nameTa}}</span></li>{{/each}}
+        </ul>
+      </div>
+
+      <section class="wrap tours" aria-labelledby="c-tours">
+        <h2 id="c-tours">Sri Lanka tour packages</h2>
+        <p class="sub">Five routes, priced per person for the car and your driver-guide. Hotels are booked separately.</p>
+        <div class="signs">
+          {{#each tours}}
+          <a class="plank" href="{{quoteUrl}}" data-plank>
+            <span class="burst"><span>From<b>{{money pricing.from pricing.currency}}</b></span></span>
+            <h3>{{title}}</h3>
+            <p>{{durationDays}} days · {{nights}} nights<br />Best {{bestMonths}}</p>
+          </a>
+          {{/each}}
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <p>Message us on WhatsApp</p>
+        <a class="foot-number" href="https://wa.me/{{digits business.whatsapp}}">{{business.whatsapp}}</a>
+      </div>
+    </footer>
+
+    <section class="spec" aria-label="Direction C specimen">
+      <div class="wrap spec-grid">
+        <div>
+          <h3>Colour (full palette)</h3>
+          <div class="swatches">
+            <span class="sw" style="--s: #f2a900"><i></i><span>Marigold</span></span>
+            <span class="sw" style="--s: #5a1220"><i></i><span>Maroon</span></span>
+            <span class="sw" style="--s: #0e6b47"><i></i><span>Parrot green</span></span>
+            <span class="sw" style="--s: #e5367d"><i></i><span>Pink</span></span>
+            <span class="sw" style="--s: #29a8d6"><i></i><span>Cyan</span></span>
+          </div>
+        </div>
+        <div>
+          <h3>Type</h3>
+          <p style="font-family: var(--shade); font-size: 2rem; line-height: 1">Bungee Shade</p>
+          <p class="sign" style="font-size: 1.4rem">Bungee</p>
+          <p>Atkinson Hyperlegible for reading text.</p>
+        </div>
+        <div>
+          <h3>Ideas in this direction</h3>
+          <p>Hand-painted lorry tailgates and bus fronts: floral corners, an oval painted scene, shadowed sign letters, and destination boards in English, Sinhala and Tamil.</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

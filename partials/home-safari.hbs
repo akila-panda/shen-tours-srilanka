@@ -1,0 +1,57 @@
+<!-- Udawalawe: follow the elephant tracks. Footprints press into the red earth as you scroll and the
+     page travels along the trail; each photo rises out of the ground when the tracks reach it. -->
+<section id="udawalawe" class="herd on-dark" data-section="herd" aria-labelledby="herd-title">
+  <div class="herd-stage" data-herd-stage>
+    <div class="herd-track" data-herd-track>
+      <svg class="herd-prints" viewBox="0 0 3200 600" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <symbol id="elephant-foot" viewBox="-30 -36 60 72">
+            <ellipse cx="0" cy="4" rx="22" ry="27" />
+            <ellipse cx="-14" cy="-25" rx="5.5" ry="4" />
+            <ellipse cx="-5" cy="-30" rx="5.5" ry="4" />
+            <ellipse cx="5" cy="-30" rx="5.5" ry="4" />
+            <ellipse cx="14" cy="-25" rx="5.5" ry="4" />
+          </symbol>
+        </defs>
+        {{#each herdPrints}}<use href="#elephant-foot" x="{{x}}" y="{{y}}" width="44" height="52" transform="rotate({{r}} {{x}} {{y}}) translate(-22 -26)" data-print-p="{{p}}" />{{/each}}
+      </svg>
+
+      <header class="herd-head">
+        <p class="hand">follow the tracks</p>
+        <h2 id="herd-title">Udawalawe</h2>
+        <p class="herd-lede">Elephants out on the open grassland of Udawalawe National Park, seen from a safari jeep. Scroll along their tracks.</p>
+      </header>
+
+      <figure class="herd-photo" style="--hx: 26%; --hy: 54%; --w: 31vw; --ratio: 3 / 2; --r: -3deg" data-herd-photo data-p="0.25">
+        <div class="herd-card" data-herd-card>
+          <div class="herd-photo-inner"><img src="{{photos.udaHerd.src}}" alt="{{photos.udaHerd.alt}}" loading="lazy" width="1600" height="1067" /></div>
+          <figcaption class="hand">the herd crossing</figcaption>
+        </div>
+      </figure>
+      <figure class="herd-photo" style="--hx: 46%; --hy: 36%; --w: 27vw; --ratio: 3 / 2; --r: 2.5deg" data-herd-photo data-p="0.45">
+        <div class="herd-card" data-herd-card>
+          <div class="herd-photo-inner"><img src="{{photos.wmUdaCalf.src}}" alt="{{photos.wmUdaCalf.alt}}" loading="lazy" width="1280" height="853" /></div>
+          <figcaption class="hand">a mother and her calf</figcaption>
+        </div>
+      </figure>
+      <figure class="herd-photo" style="--hx: 64%; --hy: 58%; --w: 20vw; --ratio: 4 / 5; --r: -2deg" data-herd-photo data-p="0.65">
+        <div class="herd-card" data-herd-card>
+          <div class="herd-photo-inner"><img src="{{photos.udaGrass.src}}" alt="{{photos.udaGrass.alt}}" loading="lazy" width="1200" height="1500" /></div>
+          <figcaption class="hand">in the tall grass</figcaption>
+        </div>
+      </figure>
+      <figure class="herd-photo" style="--hx: 80%; --hy: 40%; --w: 27vw; --ratio: 3 / 2; --r: 3deg" data-herd-photo data-p="0.82">
+        <div class="herd-card" data-herd-card>
+          <div class="herd-photo-inner"><img src="{{photos.udaGrazing.src}}" alt="{{photos.udaGrazing.alt}}" loading="lazy" width="1600" height="1067" /></div>
+          <figcaption class="hand">grazing on the open plain</figcaption>
+        </div>
+      </figure>
+
+      <div class="herd-end" data-herd-end>
+        <p class="hand">the tracks end here</p>
+        <p class="herd-end-title">Add an Udawalawe safari to your route</p>
+        {{#if safariUrl}}<a class="btn-ticket" href="{{safariUrl}}">Ask Shen →</a>{{/if}}
+      </div>
+    </div>
+  </div>
+</section>

@@ -18,7 +18,8 @@
     "photo": {
       "src": null,
       "alt": "Sigiriya rock fortress above the forest",
-      "placeholder": "Sigiriya from the air"
+      "placeholder": "Sigiriya from the air",
+      "key": "sigiriya"
     }
   },
   {
@@ -40,7 +41,8 @@
     "photo": {
       "src": null,
       "alt": "Tea plantation on a misty hillside in the hill country",
-      "placeholder": "Tea country, Nuwara Eliya"
+      "placeholder": "Tea country, Nuwara Eliya",
+      "key": "tea"
     }
   },
   {
@@ -62,7 +64,8 @@
     "photo": {
       "src": null,
       "alt": "Stilt fishermen on Sri Lanka's south coast",
-      "placeholder": "Stilt fishermen, south coast"
+      "placeholder": "Stilt fishermen, south coast",
+      "key": "stilt"
     }
   },
   {
@@ -83,8 +86,9 @@
     "status": "published",
     "photo": {
       "src": null,
-      "alt": "Leopard on a dirt track in Yala National Park",
-      "placeholder": "Leopard, Yala"
+      "alt": "A Sri Lankan elephant with her calf in Udawalawe National Park",
+      "placeholder": "Mother and calf, Udawalawe",
+      "key": "wmUdaCalf"
     }
   },
   {
@@ -106,7 +110,8 @@
     "photo": {
       "src": null,
       "alt": "Blue train crossing the Nine Arch Bridge near Ella",
-      "placeholder": "Nine Arch Bridge, Ella"
+      "placeholder": "Nine Arch Bridge, Ella",
+      "key": "nineArch"
     }
   }
 ]

@@ -1,42 +1,37 @@
-<!-- 7. Meet your guide (Fitzroy-style portrait + statement; Shashen's own quote renders once supplied) -->
-<section id="guides" class="guide py-section" data-section="guide" aria-labelledby="guide-title">
+<!-- 7. Meet your guide. Shashen's own words render only once he supplies them. -->
+<section id="guides" class="guide" data-section="guide" aria-labelledby="guide-title">
   <div class="wrap">
     <div class="guide-grid">
-      <div class="guide-portrait" data-guide-portrait>
-        <div class="ph h-full w-full" role="img" aria-label="Portrait of {{founder.name}}, founder and driver-guide" data-guide-img>
-          <span class="label opacity-80">Photo to come · {{founder.name}}</span>
-        </div>
-      </div>
+      <figure class="print guide-portrait" data-guide-portrait>
+        <div class="ph" role="img" aria-label="Portrait of {{founder.name}}, founder and driver-guide" data-guide-img><span class="label">Photo to come</span></div>
+        <figcaption>{{founder.name}}</figcaption>
+      </figure>
 
       <div class="guide-copy">
-        <p class="label text-ink-muted">Meet your guide</p>
-        <h2 id="guide-title" class="mt-6 text-display-lg">
-          {{founder.name}}
-          <span class="script mt-1 block text-script-md">“Shen”</span>
-        </h2>
-        <p class="mt-8 max-w-prose text-body-lg">
+        <h2 id="guide-title">Meet your guide<span class="hand">{{founder.name}}, “Shen”</span></h2>
+        <p class="mt-6 max-w-prose text-body-lg">
           {{firstName founder.name}} founded {{business.name}} in {{business.foundedYear}} and brings
           {{founder.years}} years of guiding. The whole team are English-speaking driver-guides from Sri
           Lanka, and one of them stays with your group for the whole trip.
         </p>
         {{#if founder.quote}}
-        <blockquote class="guide-quote mt-10">
-          <p class="font-display text-display-md uppercase">“{{founder.quote}}”</p>
-          <footer class="label mt-4 text-ink-muted">{{founder.name}}, founder</footer>
+        <blockquote class="guide-letter ruled">
+          <p class="hand" style="font-size: var(--text-hand-lg)">“{{founder.quote}}”</p>
+          <footer class="label mt-4">{{founder.name}}, founder</footer>
         </blockquote>
         {{/if}}
       </div>
     </div>
 
-    <h3 class="label mt-20 text-ink-muted md:mt-28">The driver-guides</h3>
-    <ul class="guide-cards mt-6">
+    <ul class="guide-cards" aria-label="The driver-guides">
       {{#each guides}}
       <li class="guide-card" data-guide-card>
-        <div class="ph guide-card-photo{{#if (odd @index)}} is-hills{{/if}}" role="img" aria-label="Portrait of {{name}}">
-          <span class="font-display text-display-md">{{initials name}}</span>
-        </div>
-        <p class="mt-4 font-display text-display-sm uppercase">{{name}}</p>
-        <p class="label mt-2 text-ink-muted">{{role}} · {{years}} years</p>
+        <figure class="print">
+          <div class="ph" role="img" aria-label="Portrait of {{name}}"><span>{{initials name}}</span></div>
+          <figcaption>{{years}} years guiding</figcaption>
+        </figure>
+        <p class="font-display text-display-sm font-extrabold uppercase">{{name}}</p>
+        <p class="text-small text-ink-soft">{{role}}</p>
       </li>
       {{/each}}
     </ul>

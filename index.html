@@ -7,39 +7,24 @@
   <body>
     {{> header}}
     <main id="main">
-      <!-- 2. Hero -->
-      <section class="hero relative isolate overflow-hidden bg-ink text-paper" data-section="hero" aria-labelledby="hero-title">
-        <div class="absolute inset-0 -z-10" data-hero-media>
-          <!-- Placeholders until the photos are approved (doc 08, Phase 6). -->
-          <div class="ph hero-photo is-active place-items-start" data-scene="coast" role="img" aria-label="Stilt fishermen at sunrise on Sri Lanka's south coast">
-            <span class="label mt-44 opacity-80 md:mt-40">Photo to come · Coast · stilt fishermen, south coast</span>
-          </div>
-          <div class="ph is-hills hero-photo place-items-start" data-scene="hills" role="img" aria-label="Blue train crossing the Nine Arch Bridge near Ella in the hill country">
-            <span class="label mt-44 opacity-80 md:mt-40">Photo to come · Hills · Nine Arch Bridge, Ella</span>
-          </div>
-          <div class="hero-scrim"></div>
+      <!-- 2. Hero (Moment 1 "the road" replaces the photo with a scroll sequence in R3) -->
+      <section class="hero" data-section="hero" aria-labelledby="hero-title">
+        <div class="hero-photo" data-hero-photo>
+          <img src="{{photos.nineArch.src}}" alt="{{photos.nineArch.alt}}" width="1600" height="1067" fetchpriority="high" />
         </div>
-
-        <div class="wrap relative flex min-h-[100svh] flex-col justify-end pt-36 pb-8 md:pb-12" data-hero-content>
-          <div class="hero-toggle absolute top-[calc(var(--spacing-header)+1.5rem)] right-[var(--spacing-gutter)] items-center gap-3" role="group" aria-label="Show the coast or the hills">
-            <button type="button" aria-pressed="true" data-scene="coast">Coast</button>
-            <span aria-hidden="true" class="font-display text-display-sm opacity-75">/</span>
-            <button type="button" aria-pressed="false" data-scene="hills">Hills</button>
-          </div>
-
-          <h1 id="hero-title" class="text-display-hero">
-            <span class="block" data-hero-line>Private Sri Lanka tours</span>
-            <span class="script -my-[0.12em] block text-script-lg md:ml-[22%]" data-hero-script>with a local</span>
-            <span class="block" data-hero-line>driver-guide</span>
-          </h1>
-
-          <div class="mt-8 flex flex-col gap-6 border-t border-line-light pt-6 md:mt-12 md:flex-row md:items-center md:justify-between" data-hero-foot>
-            <p class="label">
-              Airport pickup · English-speaking driver-guide · from {{money business.fromPricePerPersonPerDay business.currency}} pp/day
-            </p>
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
-              {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-solid is-light">Get a free quote <span aria-hidden="true">→</span></a>{{/if}}
-              <a href="#tours" class="btn-link">See tours <span class="arrow" aria-hidden="true">→</span></a>
+        <p class="note hero-note" data-hero-note>
+          We meet you at arrivals. The road starts there.
+          <svg viewBox="0 0 80 60" aria-hidden="true"><path d="M74 4 C 60 30, 40 44, 8 50 M8 50 L 22 40 M8 50 L 20 58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>
+        </p>
+        <div class="hero-slab">
+          <div class="wrap">
+            <h1 id="hero-title" class="hero-title" data-hero-title><span>Private Sri Lanka tours</span><span>with a local driver-guide</span></h1>
+            <div class="hero-foot">
+              <p>Your own car or van and an English-speaking driver-guide, from the airport to wherever you want to go. From {{money business.fromPricePerPersonPerDay business.currency}} per person per day.</p>
+              <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                {{#if quoteUrl}}<a href="{{quoteUrl}}" class="btn-ticket">Get a free quote →</a>{{/if}}
+                <a href="#tours" class="link-hand">or see the five routes</a>
+              </div>
             </div>
           </div>
         </div>
@@ -49,6 +34,7 @@
       {{> home-route}}
 
       {{> home-tours}}
+      {{> home-safari}}
       {{> home-where}}
 
       {{> home-guide}}

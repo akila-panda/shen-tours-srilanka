@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.title}}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Young+Serif&display=swap" />
+    <style>
+      /* Direction B — Window Seat. A day on the road seen from the van window. The page colour
+         moves from dawn to night as you scroll; scenery slides past inside window frames. */
+      :root {
+        --dawn: #f1d2c9;
+        --day: #ffffff;
+        --mist: #d3e3d8;
+        --dusk: #e8955a;
+        --night: #15193a;
+        --ink: #121212;
+        --frame: #121212;
+        --serif: 'Young Serif', Georgia, serif;
+        --sans: 'Hanken Grotesk', system-ui, sans-serif;
+        --gutter: clamp(1rem, 4vw, 3rem);
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --sky: var(--dawn);
+        --fg: var(--ink);
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      ol, ul { list-style: none; }
+      html { background: var(--sky); color: var(--fg); -webkit-font-smoothing: antialiased; }
+      body { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; background: var(--sky); color: var(--fg); transition: background-color 0.6s linear, color 0.6s linear; }
+      img { display: block; max-width: 100%; height: auto; }
+      a { color: inherit; }
+      :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+      .wrap { width: 100%; max-width: 88rem; margin-inline: auto; padding-inline: var(--gutter); }
+      .serif { font-family: var(--serif); font-weight: 400; line-height: 1.02; letter-spacing: -0.01em; }
+      .tag { position: fixed; left: 1rem; bottom: 1rem; z-index: 60; padding: 0.5rem 0.85rem; background: var(--ink); color: #fff; font: 600 0.75rem/1 var(--sans); text-decoration: none; }
+
+      /* Header */
+      .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 5rem; }
+      .mark { font-family: var(--serif); font-size: 1.5rem; text-decoration: none; }
+      .pill { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.3rem; border-radius: 999px; background: var(--fg); color: var(--sky); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: transform 0.4s var(--ease); }
+      .pill:hover { transform: translateY(-2px); }
+
+      /* Hero: text beside a van window */
+      .hero { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; min-height: calc(100svh - 5rem); padding-block: 2rem 4rem; }
+      @media (min-width: 900px) { .hero { grid-template-columns: 1fr 1.05fr; } }
+      .hero h1 { font-size: clamp(2.8rem, 6vw, 5.75rem); text-wrap: balance; }
+      .hero p.lede { margin-top: 1.5rem; max-width: 30rem; font-size: 1.15rem; }
+      .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 2rem; }
+      .hero-cta .link { font-weight: 600; text-underline-offset: 0.3em; }
+      .window { position: relative; aspect-ratio: 5 / 4; border: clamp(10px, 1.4vw, 18px) solid var(--frame); border-radius: clamp(36px, 5vw, 72px) clamp(36px, 5vw, 72px) clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px); overflow: hidden; background: var(--frame); box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.15); }
+      .window img { position: absolute; inset: 0; width: 130%; max-width: none; height: 100%; object-fit: cover; }
+      .window::after { content: ''; position: absolute; inset: 0; background: linear-gradient(115deg, rgb(255 255 255 / 0.22), transparent 38%); pointer-events: none; }
+      .pan img { animation: pan 26s ease-in-out infinite alternate; }
+      @keyframes pan { from { transform: translateX(0); } to { transform: translateX(-23%); } }
+      .when { display: flex; justify-content: space-between; margin-top: 0.9rem; font-size: 0.95rem; }
+      .when b { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; }
+
+      /* The carriage: windows in a row; the page colour follows the time of day */
+      .carriage { position: relative; padding-block: clamp(4rem, 8vw, 6rem); overflow-x: clip; }
+      .carriage-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; }
+      .carriage-head h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); max-width: 14ch; }
+      .carriage-head p { max-width: 26rem; }
+      .rail { margin-top: clamp(2.5rem, 5vw, 4rem); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .rail::-webkit-scrollbar { display: none; }
+      .train { display: flex; gap: clamp(1.25rem, 3vw, 3rem); width: max-content; padding: clamp(1.5rem, 3vw, 2.5rem) var(--gutter); background: var(--frame); border-radius: 28px; margin-inline: var(--gutter); }
+      .stop { width: clamp(16rem, 30vw, 27rem); color: #fff; scroll-snap-align: center; }
+      .stop .window { border-color: #2a2a2a; aspect-ratio: 4 / 3; }
+      .stop .window img { width: 120%; left: -10%; }
+      .stop .when { color: #fff; }
+      .stop .when span { opacity: 0.8; }
+
+      /* Tours as windows */
+      .tours { padding-block: clamp(4rem, 9vw, 8rem); }
+      .tours h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+      .tour-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); margin-top: clamp(2rem, 4vw, 3.5rem); }
+      .tour { text-decoration: none; }
+      .tour .window { aspect-ratio: 3 / 4; border-width: 10px; border-radius: 48px 48px 28px 28px; }
+      .tour .window img { width: 100%; transition: transform 0.9s var(--ease); }
+      .tour:hover .window img { transform: scale(1.06); }
+      .tour h3 { margin-top: 1rem; font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+      .tour p { margin-top: 0.35rem; font-size: 0.95rem; }
+
+      .foot { background: var(--night); color: #fff; padding-block: clamp(4rem, 9vw, 7rem) 3rem; }
+      .foot p { font-size: 1.1rem; }
+      .foot-number { display: block; margin-top: 0.5rem; font-family: var(--serif); font-size: clamp(2.6rem, 10vw, 9.5rem); line-height: 1; text-decoration: none; white-space: nowrap; }
+
+      .spec { background: #fff; color: var(--ink); padding-block: 3rem 5rem; }
+      .spec-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+      .swatches { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .sw { width: 4.5rem; }
+      .sw i { display: block; height: 3.5rem; background: var(--s); border: 1px solid rgb(0 0 0 / 0.08); }
+      .sw span { display: block; margin-top: 0.3rem; font-size: 0.72rem; line-height: 1.3; }
+      .spec h3 { font: 600 0.85rem/1 var(--sans); margin-bottom: 1rem; }
+
+      @media (prefers-reduced-motion: reduce) { .pan img { animation: none; } body { transition: none; } }
+    </style>
+    <script type="module" src="/src/js/directions/window-seat.js"></script>
+  </head>
+  <body>
+    <a class="tag" href="/directions/">Direction B · Window Seat ← all directions</a>
+
+    <header class="top">
+      <div class="wrap">
+        <a class="mark" href="/directions/window-seat.html">Shen Tours</a>
+        <a class="pill" href="{{quoteUrl}}">Plan my tour →</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="wrap hero" data-time="dawn" aria-labelledby="b-h1">
+        <div>
+          <h1 id="b-h1" class="serif">Private Sri Lanka tours with a local driver-guide</h1>
+          <p class="lede">Take the window seat. Your driver-guide meets you at arrivals and drives your group, and only your group, across the island.</p>
+          <div class="hero-cta">
+            <a class="pill" href="{{quoteUrl}}">Get a free quote →</a>
+            <a class="link" href="#b-tours">See the five tours</a>
+          </div>
+        </div>
+        <figure>
+          <div class="window pan"><img src="{{photos.colombo.src}}" alt="{{photos.colombo.alt}}" width="1600" height="1067" fetchpriority="high" /></div>
+          <figcaption class="when"><b>Dawn</b><span>Leaving Colombo airport</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="carriage" aria-labelledby="b-day" data-carriage>
+        <div class="wrap carriage-head">
+          <h2 id="b-day" class="serif">A day across the island</h2>
+          <p>Scroll and the day goes by. The colour of the page follows the light outside the window.</p>
+        </div>
+        <div class="rail" data-rail tabindex="0" role="region" aria-label="Stops through the day">
+          <ol class="train" data-train>
+            <li class="stop" data-time="morning"><div class="window"><img src="{{photos.sigiriya.src}}" alt="{{photos.sigiriya.alt}}" loading="lazy" width="1600" height="1067" data-scenery /></div><p class="when"><b>Morning</b><span>Sigiriya · ≈ 4 h from the airport</span></p></li>
+            <li class="stop" data-time="day"><div class="window"><img src="{{photos.tooth.src}}" alt="{{photos.tooth.alt}}" loading="lazy" width="1600" height="1067" data-scenery /></div><p class="when"><b>Midday</b><span>Kandy</span></p></li>
+            <li class="stop" data-time="mist"><div class="window"><img src="{{photos.tea.src}}" alt="{{photos.tea.alt}}" loading="lazy" width="1600" height="1067" data-scenery /></div><p class="when"><b>Afternoon</b><span>Tea country</span></p></li>
+            <li class="stop" data-time="mist"><div class="window"><img src="{{photos.nineArchField.src}}" alt="{{photos.nineArchField.alt}}" loading="lazy" width="1600" height="1067" data-scenery /></div><p class="when"><b>Late afternoon</b><span>Ella</span></p></li>
+            <li class="stop" data-time="dusk"><div class="window"><img src="{{photos.stilt.src}}" alt="{{photos.stilt.alt}}" loading="lazy" width="1600" height="1067" data-scenery /></div><p class="when"><b>Dusk</b><span>The south coast</span></p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="wrap tours" id="b-tours" data-time="dusk" aria-labelledby="b-tours-h">
+        <h2 id="b-tours-h" class="serif">Sri Lanka tour packages</h2>
+        <div class="tour-row">
+          <a class="tour" href="{{tours.[0].quoteUrl}}"><div class="window"><img src="{{photos.sigiriya.src}}" alt="{{photos.sigiriya.alt}}" loading="lazy" /></div><h3>{{tours.[0].title}}</h3><p>{{tours.[0].durationDays}} days · from {{money tours.[0].pricing.from tours.[0].pricing.currency}} pp</p></a>
+          <a class="tour" href="{{tours.[1].quoteUrl}}"><div class="window"><img src="{{photos.tea.src}}" alt="{{photos.tea.alt}}" loading="lazy" /></div><h3>{{tours.[1].title}}</h3><p>{{tours.[1].durationDays}} days · from {{money tours.[1].pricing.from tours.[1].pricing.currency}} pp</p></a>
+          <a class="tour" href="{{tours.[2].quoteUrl}}"><div class="window"><img src="{{photos.stilt.src}}" alt="{{photos.stilt.alt}}" loading="lazy" /></div><h3>{{tours.[2].title}}</h3><p>{{tours.[2].durationDays}} days · from {{money tours.[2].pricing.from tours.[2].pricing.currency}} pp</p></a>
+          <a class="tour" href="{{tours.[4].quoteUrl}}"><div class="window"><img src="{{photos.nineArch.src}}" alt="{{photos.nineArch.alt}}" loading="lazy" /></div><h3>{{tours.[4].title}}</h3><p>{{tours.[4].durationDays}} days · from {{money tours.[4].pricing.from tours.[4].pricing.currency}} pp</p></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot" data-time="night">
+      <div class="wrap">
+        <p>Night falls in Galle. Message us on WhatsApp for tomorrow's plans.</p>
+        <a class="foot-number" href="https://wa.me/{{digits business.whatsapp}}">{{business.whatsapp}}</a>
+      </div>
+    </footer>
+
+    <section class="spec" aria-label="Direction B specimen">
+      <div class="wrap spec-grid">
+        <div>
+          <h3>Colour (one per time of day)</h3>
+          <div class="swatches">
+            <span class="sw" style="--s: #f1d2c9"><i></i><span>Dawn</span></span>
+            <span class="sw" style="--s: #ffffff"><i></i><span>Day</span></span>
+            <span class="sw" style="--s: #d3e3d8"><i></i><span>Mist</span></span>
+            <span class="sw" style="--s: #e8955a"><i></i><span>Dusk</span></span>
+            <span class="sw" style="--s: #15193a"><i></i><span>Night</span></span>
+          </div>
+        </div>
+        <div>
+          <h3>Type</h3>
+          <p class="serif" style="font-size: 2.2rem">Young Serif</p>
+          <p>Hanken Grotesk for reading text.</p>
+        </div>
+        <div>
+          <h3>Ideas in this direction</h3>
+          <p>Every photo sits in a van or train window frame. The page changes colour with the time of day as you scroll, like Columbus's flight through the clouds.</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

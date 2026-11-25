@@ -1,22 +1,68 @@
 [
   {
-    "slug": "colombo",
-    "name": "Colombo",
-    "region": "West coast",
+    "slug": "sigiriya",
+    "name": "Sigiriya",
+    "region": "Cultural Triangle",
     "photo": {
       "src": null,
-      "alt": "Lotus Tower and the train line, Colombo",
-      "placeholder": "Lotus Tower and the train line, Colombo"
+      "alt": "Sunset light on Sigiriya, seen from Pidurangala",
+      "placeholder": "Sunset light on Sigiriya, seen from Pidurangala",
+      "key": "sigiriyaSunset"
+    }
+  },
+  {
+    "slug": "polonnaruwa",
+    "name": "Polonnaruwa",
+    "region": "Cultural Triangle",
+    "photo": {
+      "src": null,
+      "alt": "Ancient stone ruins with a Buddha statue at Polonnaruwa",
+      "placeholder": "Ancient stone ruins with a Buddha statue at Polonnaruwa",
+      "key": "wmGalVihara"
+    }
+  },
+  {
+    "slug": "minneriya",
+    "name": "Minneriya",
+    "region": "Elephant safari",
+    "photo": {
+      "src": null,
+      "alt": "Two elephants on the grassland at Minneriya",
+      "placeholder": "Two elephants on the grassland at Minneriya",
+      "key": "wmGathering"
     }
   },
   {
     "slug": "kandy",
     "name": "Kandy",
-    "region": "Hill country",
+    "region": "Hill capital",
     "photo": {
       "src": null,
-      "alt": "Temple of the Tooth across the lake, Kandy",
-      "placeholder": "Temple of the Tooth across the lake, Kandy"
+      "alt": "Temple of the Tooth beside the lake in Kandy",
+      "placeholder": "Temple of the Tooth beside the lake in Kandy",
+      "key": "wmTooth"
+    }
+  },
+  {
+    "slug": "udawalawe",
+    "name": "Udawalawe",
+    "region": "Elephant safari",
+    "photo": {
+      "src": null,
+      "alt": "A herd of elephants crossing green grassland at Udawalawe",
+      "placeholder": "A herd of elephants crossing green grassland at Udawalawe",
+      "key": "wmUdaElephant"
+    }
+  },
+  {
+    "slug": "yala",
+    "name": "Yala",
+    "region": "Leopard country",
+    "photo": {
+      "src": null,
+      "alt": "A leopard walking along a dirt track in Yala",
+      "placeholder": "A leopard walking along a dirt track in Yala",
+      "key": "wmLeopard"
     }
   },
   {
@@ -25,58 +71,9 @@
     "region": "South coast",
     "photo": {
       "src": null,
-      "alt": "Lighthouse and fort walls, Galle",
-      "placeholder": "Lighthouse and fort walls, Galle"
-    }
-  },
-  {
-    "slug": "sigiriya",
-    "name": "Sigiriya",
-    "region": "Cultural Triangle",
-    "photo": {
-      "src": null,
-      "alt": "Sigiriya rock from the air",
-      "placeholder": "Sigiriya rock from the air"
-    }
-  },
-  {
-    "slug": "ella",
-    "name": "Ella",
-    "region": "Hill country",
-    "photo": {
-      "src": null,
-      "alt": "Nine Arch Bridge, Ella",
-      "placeholder": "Nine Arch Bridge, Ella"
-    }
-  },
-  {
-    "slug": "mirissa",
-    "name": "Mirissa",
-    "region": "South coast",
-    "photo": {
-      "src": null,
-      "alt": "Palm-lined beach, Mirissa",
-      "placeholder": "Palm-lined beach, Mirissa"
-    }
-  },
-  {
-    "slug": "jaffna",
-    "name": "Jaffna",
-    "region": "North",
-    "photo": {
-      "src": null,
-      "alt": "Nallur temple, Jaffna",
-      "placeholder": "Nallur temple, Jaffna"
-    }
-  },
-  {
-    "slug": "arugam-bay",
-    "name": "Arugam Bay",
-    "region": "East coast",
-    "photo": {
-      "src": null,
-      "alt": "Boats on the shore, Arugam Bay",
-      "placeholder": "Boats on the shore, Arugam Bay"
+      "alt": "People sitting on the Galle Fort walls beside the clock tower",
+      "placeholder": "People sitting on the Galle Fort walls beside the clock tower",
+      "key": "wmGalle"
     }
   }
 ]

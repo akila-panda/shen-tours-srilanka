@@ -19,6 +19,8 @@ Source: the client's current site, [ceylonshentours.com](https://ceylonshentours
   Cultural Triangle 5d/4n $375 (Jan–Sep) · Hill Country 6d/5n $390 (Jan–Apr) · South Coast 4d/3n
   $260 (Nov–Apr) · Wildlife Safari 5d/4n $325 (Feb–Jul) · Complete Sri Lanka 10d/9n $650 (Dec–Apr).
   Also: transfers from $25, day trips from $45/day, "from $65 per person per day".
+- **Client input 2026-11-24 (WhatsApp):** key destinations are Galle, Udawalawe, Yala, Kandy,
+  Sigiriya, Polonnaruwa and the Minneriya safari. **Main market: Poland.** See doc 09.
 - **From the FAQ on the live site (read 2026-11-24):** car for 1–3 people, van for 4–12; "from
   $65 pp/day" applies to tours of a week or longer; children under 12 are not charged; hotels can be
   booked on request (budget, standard or luxury), priced separately. The 10 FAQs are in
@@ -63,7 +65,7 @@ it shows nothing in its place (no placeholder phone numbers, no fake reviews, no
 | TripAdvisor / Google Business Profile links and current ratings | Review widgets (show real counts only) | **Needed** |
 | Photos (own, not stock) and the driver/guide team | Trust; also image SEO | **Needed** |
 | Logo / brand colours, if any exist | Design system (Draft 1) | **Needed** |
-| Target markets (UK, EU, India, Australia, China, Russia?) and languages | Keyword market, hreflang later | **Needed** |
+| Target markets and languages | Keyword market, hreflang | Known: **Poland is the main market** (2026-11-24); Polish version planned (doc 09) |
 | Online payment wanted in v1? (deposit by card) | Decides booking scope — see doc 05 | **Decision** |
 
 ## Positioning hypothesis (to confirm)
