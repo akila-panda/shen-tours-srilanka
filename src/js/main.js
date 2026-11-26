@@ -1,5 +1,5 @@
 import '../styles/main.css';
-import './motion.js';
+import { ScrollTrigger } from './motion.js';
 
 // One module per homepage section (src/js/sections/), each exporting init().
 // Sections initialise in page order: ScrollTrigger needs pins higher on the page created before
@@ -13,3 +13,8 @@ for (const el of document.querySelectorAll('[data-section]')) {
   const mod = byName[el.dataset.section];
   if (typeof mod?.init === 'function') mod.init(el);
 }
+
+// Header and other early modules create triggers before the hero's pin exists; sorting by start
+// position lets the pin's extra scroll push the later triggers down.
+ScrollTrigger.sort();
+ScrollTrigger.refresh();

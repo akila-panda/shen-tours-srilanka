@@ -31,9 +31,14 @@ export function init(header) {
 function initChromeState() {
   const hero = document.querySelector('[data-section="hero"]');
   if (!hero) return;
+  // The hero pins (hero.js), so "scrolled away" is the end of its pin plus its own height.
+  // main.js sorts triggers so the hero's is refreshed before this one reads it.
+  const heroPin = () => ScrollTrigger.getAll().find((t) => t.pin === hero);
   ScrollTrigger.create({
-    trigger: hero,
-    start: 'bottom top+=72',
+    start: () => {
+      const pin = heroPin();
+      return (pin ? pin.end : hero.offsetTop) + hero.offsetHeight - 72;
+    },
     onEnter: () => root.classList.add('past-hero'),
     onLeaveBack: () => root.classList.remove('past-hero'),
   });
